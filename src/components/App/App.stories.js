@@ -1,6 +1,6 @@
-import React from "react";
-import { storiesOf } from "@storybook/react";
+// import React from "react";
+// import { storiesOf } from "@storybook/react";
 
-import App from ".";
+// import App from ".";
 
-storiesOf("App", module).add("App", () => <App />);
+// storiesOf("App", module).add("App", () => <App />);
