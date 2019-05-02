@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Location from "../components/Location";
 import PostForm from "../components/PostForm";
+import Logo from "../components/Logo";
 import Nav from "../components/Nav";
+
+import "../index.css";
 
 const Post = props => {
     const [location, setLocation] = useState({});
@@ -18,8 +21,9 @@ const Post = props => {
         }
     }, []);
     return (
-        <div>
-            <Location zoom={11} lat={location.lat} long={location.long} />;
+        <div id="post">
+            <Logo />
+            <Location zoom={11} lat={location.lat} long={location.long} />
             <PostForm lat={location.lat} long={location.long} />
             <Nav />
         </div>
