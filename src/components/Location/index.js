@@ -7,6 +7,8 @@ const config = {
     gMapsAPIkey: process.env.REACT_APP_GMAPS_KEY
 };
 
+console.log(config.gMapsAPIkey);
+
 const Location = props => {
     return (
         // Important! Always set the container height explicitly
