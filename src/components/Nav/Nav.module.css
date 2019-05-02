@@ -1,0 +1,54 @@
+.container {
+    position: fixed;
+    bottom: 0;
+    top: auto;
+    left: 0;
+    right: 0;
+    background-color: var(--blue);
+}
+
+ul {
+    height: 50px;
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    color: var(--white);
+    padding: 0 10px;
+}
+
+a,
+a:visited {
+    color: var(--white);
+    text-decoration: none;
+}
+
+.logo {
+    display: none;
+}
+
+@media screen and (min-width: 600px) {
+    .container {
+        top: 0;
+        bottom: auto;
+    }
+
+    ul {
+        justify-content: flex-start;
+        padding: 0 10px;
+    }
+
+    .logo {
+        display: inline;
+        height: 40px;
+    }
+
+    a:hover {
+        color: var(--yellow);
+    }
+}
