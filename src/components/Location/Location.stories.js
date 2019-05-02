@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react";
 
 import Location from ".";
 
-storiesOf("Location", module)
+storiesOf("Components|Location", module)
     // .add("Desktop", () => <Location />)
     // .add("Mobile", () => <Location />, {
     //     viewport: { defaultViewport: "iphone5" }

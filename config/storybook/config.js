@@ -16,8 +16,13 @@ const components = require.context(
     true,
     /\.stories\.js$/
 );
+
+// const pages = require("../../src/pages");
+const pages = require.context("../../src/pages", true, /\.stories\.js$/);
+
 function loadStories() {
     components.keys().forEach(filename => components(filename));
+    pages.keys().forEach(filename => pages(filename));
 }
 
 configure(loadStories, module);
