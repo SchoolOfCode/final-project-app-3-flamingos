@@ -1,18 +1,32 @@
-import React from "react";
-import CurrentLocation from "../components/CurrentLocation";
+import React, { useState, useEffect } from "react";
+import Location from "../components/Location";
 import PostForm from "../components/PostForm";
 import Logo from "../components/Logo";
+import Nav from "../components/Nav";
 
-// import css from "./cssModules/post.module.css";
 import "../index.css";
 
 const Post = props => {
+    const [location, setLocation] = useState({});
+    // const [zoom, setZoom] = useState(props.zoom);
+
+    useEffect(() => {
+        if (navigator && navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(pos => {
+                setLocation({
+                    lat: pos.coords.latitude,
+                    long: pos.coords.longitude
+                });
+            });
+        }
+    }, []);
     return (
         <div id="post">
             <Logo />
-            <CurrentLocation />
-            <PostForm />
+            <Location zoom={11} lat={location.lat} long={location.long} />
+            <PostForm lat={location.lat} long={location.long} />
+            <Nav />
         </div>
     );
-}
+};
 export default Post;
