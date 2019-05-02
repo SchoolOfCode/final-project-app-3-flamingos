@@ -9,7 +9,7 @@ const Location = props => {
         <div className={css.container}>
             <GoogleMapReact
                 bootstrapURLKeys={{
-                    key: "AIzaSyD49JgHDhlWXlpMtIm2uG-_0gSWN4DHBJ0"
+                    key: process.env.REACT_APP_GMAPS_KEY
                 }}
                 center={{ lat: props.lat, lng: props.long }}
                 zoom={props.zoom}
