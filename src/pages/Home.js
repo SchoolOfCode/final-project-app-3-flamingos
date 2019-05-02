@@ -1,7 +1,5 @@
 import React from "react";
 
-import App from "./../components/App";
-
-const Home = props => <App />;
+const Home = props => <h1>Home</h1>;
 
 export default Home;
