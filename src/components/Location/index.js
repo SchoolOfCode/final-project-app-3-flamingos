@@ -3,7 +3,7 @@ import css from "./Location.module.css";
 
 import GoogleMapReact from "google-map-react";
 
-console.log(process.env.REACT_APP_GMAPS_KEY);
+console.log({ gKey: process.env.REACT_APP_GMAPS_KEY });
 
 const Location = props => {
     return (
