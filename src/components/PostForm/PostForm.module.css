@@ -13,6 +13,10 @@
     background-color: transparent;
 }
 
+.submit {
+    background-color: #FF7D62;
+}
+
 @media screen and (min-width: 600px) {
     .container {
         width: 50%;
