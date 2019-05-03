@@ -7,10 +7,21 @@ import "../index.css";
 
 const Post = props => {
     const [location, setLocation] = useState({});
-    // const [markers, setMarkers] = useState([]);
+    const [posts, setPosts] = useState(false);
     // const [zoom, setZoom] = useState(props.zoom);
 
     useEffect(() => {
+        fetch(`${process.env.REACT_APP_API_URL}/posts`, {
+            method: "GET",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(data => setPosts(data.payload))
+            .catch(err => console.error(err));
+
         if (navigator && navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(pos => {
                 setLocation({
@@ -28,11 +39,7 @@ const Post = props => {
                 zoom={12}
                 lat={location.lat}
                 long={location.long}
-                markers={[
-                    { lat: 52.45, long: -1.86, colour: "red" },
-                    { lat: 52.46, long: -1.87, colour: "green" },
-                    { lat: 52.48, long: -1.89, colour: "blue" }
-                ]}
+                markers={posts}
                 current={true}
                 colour="dodgerblue"
             />
