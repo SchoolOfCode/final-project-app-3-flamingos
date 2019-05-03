@@ -17,19 +17,22 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-#post {
+#post,
+#live {
     top: 0;
-    bottom:0;
+    bottom: 0;
     left: 0;
     right: 0;
     height: 100;
     position: absolute;
     display: flex;
     flex-direction: column;
-    background-color: #29348E;
+    align-items: center;
+    background-color: #29348e;
 }
 
-#post > svg {
-    fill: #FFBA56;
-    padding: 0 20px
+#post > svg,
+#live > svg {
+    fill: #ffba56;
+    padding: 0 20px;
 }
