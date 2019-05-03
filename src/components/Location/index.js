@@ -22,20 +22,29 @@ const Location = props => {
                           return (
                               <Marker
                                   key={index}
-                                  lat={marker.lat}
-                                  lng={marker.long}
-                                  colour={marker.colour}
+                                  lat={marker.latitude}
+                                  lng={marker.longitude}
+                                  text={marker.description}
+                                  colour={
+                                      marker.postCategory === "travel"
+                                          ? "brown"
+                                          : marker.postCategory === "crime"
+                                          ? "red"
+                                          : marker.postCategory === "emergency"
+                                          ? "green"
+                                          : "black"
+                                  }
                               />
                           );
                       })
                     : null}
-                    {props.current
-                    ? <Current
-                                  lat={props.lat}
-                                  lng={props.long}
-                                  colour={props.colour}
-                              />
-                    : null}
+                {props.current ? (
+                    <Current
+                        lat={props.lat}
+                        lng={props.long}
+                        colour={props.colour}
+                    />
+                ) : null}
             </GoogleMapReact>
         </div>
     );
