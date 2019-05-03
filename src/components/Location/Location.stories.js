@@ -27,4 +27,22 @@ storiesOf("Components|Location", module)
         {
             viewport: { defaultViewport: "iphone5" }
         }
-    );
+    ).add("B'ham Desktop w/ Current", () => (
+        <Location zoom={11} lat={52.47547} long={-1.88357} current={true} colour="dodgerblue"/>
+    ))
+    .add(
+        "B'ham Mobile  w/ Current",
+        () => <Location zoom={11} lat={52.47547} long={-1.88357} current={true} colour="dodgerblue"/>,
+        {
+            viewport: { defaultViewport: "iphone5" }
+        }
+    ).add("B'ham Desktop w/ Marker", () => (
+        <Location zoom={11} lat={52.47547} long={-1.88357} markers={[{lat: 52.46, long: -1.90, colour: "red"}]}/>
+    ))
+    .add(
+        "B'ham Mobile  w/ Marker",
+        () => <Location zoom={11} lat={52.47547} long={-1.88357} markers={[{lat: 52.46, long: -1.90, colour: "red"}]}/>,
+        {
+            viewport: { defaultViewport: "iphone5" }
+        }
+    )

@@ -23,7 +23,7 @@ const Post = props => {
     return (
         <div id="post">
             <Logo />
-            <Location zoom={11} lat={location.lat} long={location.long} />
+            <Location zoom={11} lat={location.lat} long={location.long} current={true} colour="dodgerblue"/>
             <PostForm lat={location.lat} long={location.long} />
             <Nav />
         </div>
