@@ -7,6 +7,8 @@ import "./index.css";
 import Home from "./pages/Home";
 import Post from "./pages/Post";
 import Live from "./pages/Live";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 import * as serviceWorker from "./serviceWorker";
 // If you want your app to work offline and load faster, you can change
@@ -19,6 +21,8 @@ const routing = (
         <Route exact path="/" component={Home} />
         <Route path="/post" component={Post} />
         <Route path="/live" component={Live} />
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
     </Router>
 );
 
