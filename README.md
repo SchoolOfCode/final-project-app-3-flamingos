@@ -1,68 +1,64 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Report it - Watu
 
-## Available Scripts
+## User Stories:
 
-In the project directory, you can run:
+#### Jeremiah:
 
-### `npm start`
+-   _Age_: 62
+-   _Education_: O-levels
+-   _Social Networks_: Facebook
+-   _Occupation_: Retired Carpenter
+-   _Marital Status_: Married
+-   _Why do they use Watu_: Fed up of vandalism in the area, heavily involved in the local parish and volunteers at
+    the local food bank, does some charity work. Uses the charity and volunteer work to
+    keep himself busy.
+-   _What do they want to do with Watu_: On his way back from a volunteer meeting Jeremiah notices some vandalism to some road signs. He:
+    -   goes to the Watu website
+    -   wait for the correct location to be shown
+    -   selects the vandalism category
+    -   takes a photo of the damage
+    -   adds a short description of what he's seen and
+    -   submits the report.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### Jonny:
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+-   _Age_: 25
+-   _Education_: BSc Physics
+-   _Social Networks_: Facebook, Instagram, Twitter
+-   _Occupation_: Risk Assessor at a large Financial Inst.
+-   _Marital Status_: Cohabitaing
+-   _Why do they use Watu_: Doesn't like anti-social behaviour, including drunk people on the street, homeless
+    people pestering him.
+-   _What do they want to do with Watu_: On getting home after work, he:
+    -   goes to the Watu website
+    -   he's already signed in and goes to the live tab
+    -   he looks for any updates on his post
 
-### `npm test`
+#### Julie:
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-   _Age_: 45
+-   _Education_: BA Art
+-   _Social Networks_: Facebook, Pinterest
+-   _Occupation_: Social worker
+-   _Marital Status_: Cohabititing
+-   _Why do they use Watu_: Wants to help others while on the move, has volunteered for St John's Ambulance.
+    Wants to see society improved, not just dealt with.
+    Feels part of the community and feels what affects others affects her.
+-   _What do they want to do with Watu_: Hears about Watu so:
+    -   goes to the Watu website
+    -   registers for an account
+    -   requests to be notified about 1st aid emergencies in her local area
 
-### `npm run build`
+#### Laura:
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+-   _Age_: 37
+-   _Education_: BA History
+-   _Social Networks_: Facebook, LinkedIn
+-   _Occupation_: Stay at home mum
+-   _Marital Status_: Married
+-   _Why do they use Watu_: Has concerns about her children being injured by damaged railings and pot holes when
+    they play outside.
+-   _What do they want to do with Watu_: Laura noticed some vandalism and a group of youths at her local park so:
+    -   opens the Watu website
+    -   makes a post about the damage to the equipment at the park
+    -   submits the post
