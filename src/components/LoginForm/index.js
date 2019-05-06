@@ -23,7 +23,27 @@ const LoginForm = props => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        // submit code
+        fetch(`${process.env.REACT_APP_API_URL}/authenticate`, {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                phone: `${phoneCountry}${phoneNumber}`,
+                password: password
+            })
+        })
+            .then(res => res.json())
+            .then(data => {
+                localStorage.setItem("token", data.token);
+            })
+            .catch(err => console.error(err))
+            .finally(() => {
+                setPhoneCountry("");
+                setPhoneNumber("");
+                setPassword("");
+            });
     };
 
     return (
@@ -35,7 +55,7 @@ const LoginForm = props => {
                     onChange={handlePhoneCountry}
                     value={phoneCountry}
                 >
-                    <option value="UK">+44</option>
+                    <option value="+44">+44</option>
                 </select>
                 <input
                     className={css.phoneNumber}

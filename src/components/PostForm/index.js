@@ -18,7 +18,7 @@ const PostForm = props => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        console.log("url:", process.env.REACT_APP_API_URL);
+
         fetch(`${process.env.REACT_APP_API_URL}/posts`, {
             method: "POST",
             headers: {
