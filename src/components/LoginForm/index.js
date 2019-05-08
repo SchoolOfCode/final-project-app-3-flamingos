@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import css from "./LoginForm.module.css";
 
 const LoginForm = props => {
-    const [phoneCountry, setPhoneCountry] = useState("UK");
+    const [phoneCountry, setPhoneCountry] = useState("+44");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [password, setPassword] = useState("");
 
@@ -36,7 +36,10 @@ const LoginForm = props => {
         })
             .then(res => res.json())
             .then(data => {
-                localStorage.setItem("token", data.token);
+                console.log(data);
+                if (data.token) {
+                    localStorage.setItem("token", data.token);
+                }
             })
             .catch(err => console.error(err))
             .finally(() => {

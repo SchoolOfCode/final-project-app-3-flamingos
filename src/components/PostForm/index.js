@@ -1,10 +1,10 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import css from "./PostForm.module.css";
 
 const PostForm = props => {
     const [description, setDescription] = useState("");
     const [category, setCategory] = useState("travel");
-    const fileInput = useRef(null);
+    const [file, setFile] = useState(null);
 
     const handleChange = event => {
         const { value } = event.target;
@@ -16,25 +16,52 @@ const PostForm = props => {
         setCategory(value);
     };
 
-    const handleSubmit = event => {
+    const handleFile = event => {
+        const file = event.target.files[0];
+        setFile(file);
+    };
+
+    const handleSubmit = async event => {
         event.preventDefault();
 
-        fetch(`${process.env.REACT_APP_API_URL}/posts`, {
-            method: "POST",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                userId: "5ccc5b9ed57c6c3d8812d9ea", // hard coded for now, to test
-                imageUrl: "https://image.com",
-                imageId: "123456",
-                description: description,
-                longitude: props.long,
-                latitude: props.lat,
-                postCategory: category
-            })
-        })
+        // Post image to our image api
+        const imageData = await fetch(
+            `${
+                process.env.REACT_APP_API_URL
+            }/images?token=${localStorage.getItem("token")}`,
+            {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "multipart/form-data"
+                },
+                body: {
+                    image: formData
+                }
+            }
+        );
+        console.log(imageData);
+        // Post post data to posts api
+        fetch(
+            `${
+                process.env.REACT_APP_API_URL
+            }/posts?token=${localStorage.getItem("token")}`,
+            {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    imageUrl: imageData.image.url,
+                    imageId: imageData.image.id,
+                    description: description,
+                    longitude: props.long,
+                    latitude: props.lat,
+                    postCategory: category
+                })
+            }
+        )
             .then(res => res.json())
             .then(data => console.log(data))
             .catch(err => console.error(err))
@@ -63,7 +90,7 @@ const PostForm = props => {
                 id="photo"
                 name="photo"
                 type="file"
-                ref={fileInput}
+                onChange={handleFile}
             />
             <input
                 className={css.description}
