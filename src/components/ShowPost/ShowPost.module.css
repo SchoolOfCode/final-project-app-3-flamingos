@@ -1,0 +1,18 @@
+.comments {
+    list-style: none;
+    color: black;
+}
+
+.comment {
+    color: black;
+}
+
+.info {
+    color: grey;
+    font-size: 10px;
+    padding-left: 5px;
+}
+
+.description {
+    font-weight: bolder;
+}

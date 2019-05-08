@@ -24,14 +24,13 @@ const Location = props => {
                                   key={index}
                                   lat={marker.latitude}
                                   lng={marker.longitude}
-                                  text={marker.description}
                                   colour={
                                       marker.postCategory === "travel"
-                                          ? "brown"
+                                          ? "darkbrown"
                                           : marker.postCategory === "crime"
-                                          ? "red"
+                                          ? "darkblue"
                                           : marker.postCategory === "emergency"
-                                          ? "green"
+                                          ? "darkgreen"
                                           : "black"
                                   }
                               />

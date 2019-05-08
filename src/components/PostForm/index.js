@@ -36,7 +36,7 @@ const PostForm = props => {
                     "Content-Type": "multipart/form-data"
                 },
                 body: {
-                    image: formData
+                    image: file
                 }
             }
         );
@@ -53,8 +53,8 @@ const PostForm = props => {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    imageUrl: imageData.image.url,
-                    imageId: imageData.image.id,
+                    imageUrl: "http://testimage.com",
+                    imageId: "testImadeID",
                     description: description,
                     longitude: props.long,
                     latitude: props.lat,
