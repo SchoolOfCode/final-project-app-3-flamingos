@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import css from "./RegisterForm.module.css";
-import config from "../config";
+import config from "../../config";
 
 const RegisterForm = props => {
     const [phoneCountry, setPhoneCountry] = useState("+44");

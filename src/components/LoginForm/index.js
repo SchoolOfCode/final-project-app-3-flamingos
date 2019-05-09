@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import css from "./LoginForm.module.css";
-import config from "../config";
+import config from "../../config";
 
 const LoginForm = props => {
     const [phoneCountry, setPhoneCountry] = useState("+44");
