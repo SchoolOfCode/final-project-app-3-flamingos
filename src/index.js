@@ -5,6 +5,7 @@ import "./index.css";
 
 // Import pages
 import Home from "./pages/Home";
+import New from "./pages/New";
 import Post from "./pages/Post";
 import Live from "./pages/Live";
 import Login from "./pages/Login";
@@ -19,10 +20,11 @@ serviceWorker.unregister();
 const routing = (
     <Router>
         <Route exact path="/" component={Home} />
-        <Route path="/post" component={Post} />
         <Route path="/live" component={Live} />
-        <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
+        <Route path="/login" component={Login} />
+        <Route path="/new" component={New} />
+        <Route exact path="/post/:id" component={Post} />
     </Router>
 );
 

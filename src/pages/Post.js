@@ -1,32 +1,75 @@
 import React, { useState, useEffect } from "react";
+import config from "../config";
 import Location from "../components/Location";
-import PostForm from "../components/PostForm";
 import Logo from "../components/Logo";
 import Nav from "../components/Nav";
+import ShowPost from "../components/ShowPost";
+import AddComment from "../components/AddComment";
 
 import "../index.css";
 
-const Post = props => {
+const ShowPosts = props => {
     const [location, setLocation] = useState({});
-    // const [zoom, setZoom] = useState(props.zoom);
+    const [post, setPost] = useState(false);
+    const [postId, setPostId] = useState(false);
+    const [addComment, setAddComment] = useState(false);
+    const urlParams = props.match.params.id;
 
     useEffect(() => {
-        if (navigator && navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(pos => {
-                setLocation({
-                    lat: pos.coords.latitude,
-                    long: pos.coords.longitude
-                });
+        setPostId(urlParams);
+        // if (navigator && navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(pos => {
+            setLocation({
+                lat: pos.coords.latitude,
+                long: pos.coords.longitude
             });
+        });
+        // }
+    }, [urlParams]);
+
+    useEffect(() => {
+        try {
+            async function fetchData() {
+                // if (postId) {
+                let res = await fetch(`${config.API_URL}/posts/${postId}`, {
+                    method: "GET",
+                    headers: {
+                        Accept: "application/json",
+                        "Content-Type": "application/json"
+                    }
+                });
+                let data = await res.json();
+                setPost(data.payload);
+                // }
+            }
+            fetchData();
+        } catch (err) {
+            console.log({ fetch: err });
         }
-    }, []);
+    }, [postId]);
+
     return (
-        <div id="post">
+        <div id="posts">
             <Logo />
-            <Location zoom={11} lat={location.lat} long={location.long} current={true} colour="dodgerblue"/>
-            <PostForm lat={location.lat} long={location.long} />
+            {post && (
+                <Location
+                    zoom={11}
+                    lat={location.lat}
+                    long={location.long}
+                    markers={post}
+                    current={true}
+                    colour="dodgerblue"
+                />
+            )}
+            {post && <ShowPost posts={post} />}
+            {addComment ? (
+                <AddComment />
+            ) : (
+                <button onClick={() => setAddComment(true)}>+</button>
+            )}
             <Nav />
         </div>
     );
 };
-export default Post;
+
+export default ShowPosts;

@@ -7,7 +7,7 @@
     background-color: var(--blue);
 }
 
-ul {
+nav > ul {
     height: 50px;
     list-style: none;
     display: flex;
@@ -17,7 +17,7 @@ ul {
     margin: 0;
 }
 
-li {
+nav > li {
     color: var(--white);
     padding: 0 10px;
 }

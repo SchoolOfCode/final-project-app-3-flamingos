@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import css from "./LoginForm.module.css";
+import config from "../config";
 
 const LoginForm = props => {
     const [phoneCountry, setPhoneCountry] = useState("+44");
@@ -23,7 +24,7 @@ const LoginForm = props => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        fetch(`${process.env.REACT_APP_API_URL}/authenticate`, {
+        fetch(`${config.API_URL}/authenticate`, {
             method: "POST",
             headers: {
                 Accept: "application/json",
