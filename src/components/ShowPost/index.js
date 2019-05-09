@@ -5,25 +5,28 @@ const ShowPost = props => {
     return (
         <div className={css.container}>
             {props.posts
-                ? props.posts.map((post, index) => {
+                ? props.posts.map(post => {
                       return (
-                          <ul className={css.comments}>
-                              <li className={css.description}>
+                          <div className={css.post}>
+                              <h4 key={99} className={css.description}>
                                   {post.description}
-                              </li>
-                              {post.comments.map(comment => {
-                                  return (
-                                      <li key={comment.date}>
-                                          <p className={css.comment}>
-                                              {comment.comment}
-                                          </p>
-                                          <p className={css.info}>
-                                              - {comment.date}
-                                          </p>
-                                      </li>
-                                  );
-                              })}
-                          </ul>
+                              </h4>
+                              <ul className={css.comments}>
+                                  {post.comments.map((comment, index) => {
+                                      return (
+                                          <li key={index}>
+                                              <p className={css.comment}>
+                                                  {comment.comment}
+                                              </p>
+                                              <p className={css.info}>
+                                                  {comment.userId.displayName} -{" "}
+                                                  {comment.date}
+                                              </p>
+                                          </li>
+                                      );
+                                  })}
+                              </ul>
+                          </div>
                       );
                   })
                 : null}

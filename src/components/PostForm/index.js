@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import css from "./PostForm.module.css";
+import config from "../config";
 
 const PostForm = props => {
     const [description, setDescription] = useState("");
@@ -26,9 +27,7 @@ const PostForm = props => {
 
         // Post image to our image api
         const imageData = await fetch(
-            `${
-                process.env.REACT_APP_API_URL
-            }/images?token=${localStorage.getItem("token")}`,
+            `${config.API_URL}/images?token=${localStorage.getItem("token")}`,
             {
                 method: "POST",
                 headers: {
@@ -43,9 +42,7 @@ const PostForm = props => {
         console.log(imageData);
         // Post post data to posts api
         fetch(
-            `${
-                process.env.REACT_APP_API_URL
-            }/posts?token=${localStorage.getItem("token")}`,
+            `${config.API_URL}/posts?token=${localStorage.getItem("token")}`,
             {
                 method: "POST",
                 headers: {

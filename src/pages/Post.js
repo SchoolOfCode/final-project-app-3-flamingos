@@ -10,35 +10,42 @@ import "../index.css";
 
 const ShowPosts = props => {
     const [location, setLocation] = useState({});
-    const [post, setPost] = useState();
-    const [postId, setPostId] = useState("");
+    const [post, setPost] = useState(false);
+    const [postId, setPostId] = useState(false);
     const [addComment, setAddComment] = useState(false);
+    const urlParams = props.match.params.id;
 
     useEffect(() => {
-        const urlParams = props.location.pathname.split("/");
-        setPostId(urlParams[urlParams.length - 1]);
-
-        if (navigator && navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(pos => {
-                setLocation({
-                    lat: pos.coords.latitude,
-                    long: pos.coords.longitude
-                });
+        setPostId(urlParams);
+        // if (navigator && navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(pos => {
+            setLocation({
+                lat: pos.coords.latitude,
+                long: pos.coords.longitude
             });
-        }
-    }, []);
+        });
+        // }
+    }, [urlParams]);
 
     useEffect(() => {
-        fetch(`${config.API_URL}/posts/${postId}`, {
-            method: "GET",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
+        try {
+            async function fetchData() {
+                // if (postId) {
+                let res = await fetch(`${config.API_URL}/posts/${postId}`, {
+                    method: "GET",
+                    headers: {
+                        Accept: "application/json",
+                        "Content-Type": "application/json"
+                    }
+                });
+                let data = await res.json();
+                setPost(data.payload);
+                // }
             }
-        })
-            .then(res => res.json())
-            .then(data => setPost(data.payload))
-            .catch(err => console.error(err));
+            fetchData();
+        } catch (err) {
+            console.log({ fetch: err });
+        }
     }, [postId]);
 
     return (
@@ -46,7 +53,7 @@ const ShowPosts = props => {
             <Logo />
             {post && (
                 <Location
-                    zoom={12}
+                    zoom={11}
                     lat={location.lat}
                     long={location.long}
                     markers={post}

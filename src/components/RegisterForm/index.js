@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import css from "./RegisterForm.module.css";
+import config from "../config";
 
 const RegisterForm = props => {
     const [phoneCountry, setPhoneCountry] = useState("+44");
@@ -35,7 +36,7 @@ const RegisterForm = props => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        fetch(`${process.env.REACT_APP_API_URL}/users`, {
+        fetch(`${config.API_URL}/users`, {
             method: "POST",
             headers: {
                 Accept: "application/json",

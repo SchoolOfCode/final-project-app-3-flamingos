@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import config from "../config";
 import Location from "../components/Location";
 import Logo from "../components/Logo";
 import Nav from "../components/Nav";
@@ -11,7 +12,7 @@ const Post = props => {
     // const [zoom, setZoom] = useState(props.zoom);
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}/posts`, {
+        fetch(`${config.API_URL}/posts`, {
             method: "GET",
             headers: {
                 Accept: "application/json",
