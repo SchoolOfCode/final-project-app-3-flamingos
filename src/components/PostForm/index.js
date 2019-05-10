@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import css from "./PostForm.module.css";
-import config from "../config";
+import config from "../../config";
 
 const PostForm = props => {
     const [description, setDescription] = useState("");
@@ -25,38 +25,22 @@ const PostForm = props => {
     const handleSubmit = async event => {
         event.preventDefault();
 
-        // Post image to our image api
-        const imageData = await fetch(
-            `${config.API_URL}/images?token=${localStorage.getItem("token")}`,
-            {
-                method: "POST",
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "multipart/form-data"
-                },
-                body: {
-                    image: file
-                }
-            }
-        );
-        console.log(imageData);
-        // Post post data to posts api
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("description", description);
+        formData.append("longitude", props.long);
+        formData.append("latitude", props.lat);
+        formData.append("postCategory", category);
+
         fetch(
             `${config.API_URL}/posts?token=${localStorage.getItem("token")}`,
             {
                 method: "POST",
                 headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json"
+                    Accept: "application/json"
+                    // "Content-Type": "multipart/form-data"
                 },
-                body: JSON.stringify({
-                    imageUrl: "http://testimage.com",
-                    imageId: "testImadeID",
-                    description: description,
-                    longitude: props.long,
-                    latitude: props.lat,
-                    postCategory: category
-                })
+                body: formData
             }
         )
             .then(res => res.json())
@@ -76,16 +60,14 @@ const PostForm = props => {
                 onChange={handleSelect}
                 value={category}
             >
-                {/* <option value="event">Event</option>
-                <option value="promotion">Promotion</option> */}
                 <option value="travel">Travel Disruption</option>
                 <option value="emergency">Medical Emergency</option>
                 <option value="crime">Crime</option>
             </select>
             <input
-                className={css.photo}
-                id="photo"
-                name="photo"
+                className={css.file}
+                id="file"
+                name="file"
                 type="file"
                 onChange={handleFile}
             />
