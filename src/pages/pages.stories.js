@@ -33,7 +33,7 @@ storiesOf("Pages|New", module)
     });
 
 storiesOf("Pages|Post", module)
-    // WtbI9bX3lE
+    // post id passed as props WtbI9bX3lE
     .add("Desktop", () => <Post match={{ params: { id: "WtbI9bX3lE" } }} />)
     .add("Mobile", () => <Post match={{ params: { id: "WtbI9bX3lE" } }} />, {
         viewport: { defaultViewport: "iphone5" }
