@@ -24,7 +24,9 @@ const AddComment = props => {
                 },
                 body: JSON.stringify({ comment })
             }
-        );
+        ).then(() => {
+            setComment("");
+        });
     };
 
     return (
