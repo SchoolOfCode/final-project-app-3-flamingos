@@ -4,24 +4,20 @@ import Location from "../components/Location";
 import Logo from "../components/Logo";
 import Nav from "../components/Nav";
 
-import "../index.css";
+import io from "socket.io-client";
 
-const Post = props => {
+import "../index.css";
+const socket = io("http://localhost:8000", { transports: ["websocket"] });
+
+const Live = props => {
     const [location, setLocation] = useState({});
-    const [posts, setPosts] = useState(false);
+    const [posts, setPosts] = useState([]);
     // const [zoom, setZoom] = useState(props.zoom);
 
     useEffect(() => {
-        fetch(`${config.API_URL}/posts`, {
-            method: "GET",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-            }
-        })
-            .then(res => res.json())
-            .then(data => setPosts(data.payload))
-            .catch(err => console.error(err));
+        socket.on("post", msg => {
+            setPosts([...posts, msg]);
+        });
 
         if (navigator && navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(pos => {
@@ -31,7 +27,7 @@ const Post = props => {
                 });
             });
         }
-    }, []);
+    }, [posts]);
 
     return (
         <div id="live">
@@ -49,4 +45,4 @@ const Post = props => {
     );
 };
 
-export default Post;
+export default Live;
