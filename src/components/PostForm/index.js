@@ -25,81 +25,71 @@ const PostForm = props => {
   const handleSubmit = async event => {
     event.preventDefault();
 
-    // Post image to our image api
-    const imageData = await fetch(
-      `${config.API_URL}/images?token=${localStorage.getItem("token")}`,
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "multipart/form-data"
-        },
-        body: {
-          image: file
-        }
-      }
-    );
-    console.log(imageData);
-    // Post post data to posts api
-    fetch(`${config.API_URL}/posts?token=${localStorage.getItem("token")}`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        imageUrl: "http://testimage.com",
-        imageId: "testImadeID",
-        description: description,
-        longitude: props.long,
-        latitude: props.lat,
-        postCategory: category
-      })
-    })
-      .then(res => res.json())
-      .then(data => console.log(data))
-      .catch(err => console.error(err))
-      .finally(() => {
-        setDescription("");
-        setCategory("travel");
-      });
-  };
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("description", description);
+        formData.append("longitude", props.long);
+        formData.append("latitude", props.lat);
+        formData.append("postCategory", category);
 
-  return (
-    <form className={css.container} onSubmit={handleSubmit}>
-      <select
-        name="category"
-        className={css.type}
-        onChange={handleSelect}
-        value={category}
-      >
-        {/* <option value="event">Event</option>
-                <option value="promotion">Promotion</option> */}
-        <option value="travel">Travel Disruption</option>
-        <option value="emergency">Medical Emergency</option>
-        <option value="crime">Crime</option>
-      </select>
-      <input
-        className={css.photo}
-        id="photo"
-        name="photo"
-        type="file"
-        onChange={handleFile}
-      />
-      <input
-        className={css.description}
-        id="description"
-        name="description"
-        type="textarea"
-        placeholder="what's going on?"
-        required={true}
-        wrap="soft"
-        value={description}
-        onChange={handleChange}
-      />
-      <input className={css.submit} id="submit" name="submit" type="submit" />
-    </form>
-  );
+        fetch(
+            `${config.API_URL}/posts?token=${localStorage.getItem("token")}`,
+            {
+                method: "POST",
+                headers: {
+                    Accept: "application/json"
+                    // "Content-Type": "multipart/form-data"
+                },
+                body: formData
+            }
+        )
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(err => console.error(err))
+            .finally(() => {
+                setDescription("");
+                setCategory("travel");
+            });
+    };
+
+    return (
+        <form className={css.container} onSubmit={handleSubmit}>
+            <select
+                name="category"
+                className={css.type}
+                onChange={handleSelect}
+                value={category}
+            >
+                <option value="travel">Travel Disruption</option>
+                <option value="emergency">Medical Emergency</option>
+                <option value="crime">Crime</option>
+            </select>
+            <input
+                className={css.file}
+                id="file"
+                name="file"
+                type="file"
+                onChange={handleFile}
+            />
+            <input
+                className={css.description}
+                id="description"
+                name="description"
+                type="textarea"
+                placeholder="what's going on?"
+                required={true}
+                wrap="soft"
+                value={description}
+                onChange={handleChange}
+            />
+            <input
+                className={css.submit}
+                id="submit"
+                name="submit"
+                type="submit"
+            />
+        </form>
+    );
 };
 
 export default PostForm;

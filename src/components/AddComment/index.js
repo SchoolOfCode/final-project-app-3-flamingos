@@ -9,11 +9,25 @@ const AddComment = props => {
     const { value } = event.target;
     setComment(value);
   };
-
-  const handleSubmit = async event => {
-    event.preventDefault();
-    // submit comment code
-  };
+  
+    const handleSubmit = async event => {
+        event.preventDefault();
+        fetch(
+            `${config.API_URL}/posts/${
+                props.postId
+            }?token=${localStorage.getItem("token")}`,
+            {
+                method: "PATCH",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ comment })
+            }
+        ).then(() => {
+            setComment("");
+        });
+    };
 
   return (
     <form onSubmit={handleSubmit}>
