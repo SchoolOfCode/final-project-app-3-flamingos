@@ -8,7 +8,8 @@ import ShowPost from "../components/ShowPost";
 import AddComment from "../components/AddComment";
 
 import "../index.css";
-const socket = io("http://localhost:8000", { transports: ["websocket"] });
+
+const socket = io(config.SOC_URL, { transports: ["websocket"] });
 const ShowPosts = props => {
     const [location, setLocation] = useState({});
     const [post, setPost] = useState(false);
@@ -68,7 +69,7 @@ const ShowPosts = props => {
             )}
             {post && <ShowPost posts={post} />}
             {addComment ? (
-                <AddComment />
+                <AddComment postId={postId} />
             ) : (
                 <button onClick={() => setAddComment(true)}>+</button>
             )}

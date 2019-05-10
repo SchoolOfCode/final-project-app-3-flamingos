@@ -7,7 +7,8 @@ import Nav from "../components/Nav";
 import io from "socket.io-client";
 
 import "../index.css";
-const socket = io("http://localhost:8000", { transports: ["websocket"] });
+
+const socket = io(config.SOC_URL, { transports: ["websocket"] });
 
 const Live = props => {
     const [location, setLocation] = useState({});
