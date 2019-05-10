@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import io from "socket.io-client";
 import config from "../config";
 import Location from "../components/Location";
 import Logo from "../components/Logo";
@@ -8,6 +9,7 @@ import AddComment from "../components/AddComment";
 
 import "../index.css";
 
+const socket = io(config.SOC_URL, { transports: ["websocket"] });
 const ShowPosts = props => {
     const [location, setLocation] = useState({});
     const [post, setPost] = useState(false);
@@ -46,6 +48,10 @@ const ShowPosts = props => {
         } catch (err) {
             console.log({ fetch: err });
         }
+
+        socket.on(`${postId}`, post => {
+            setPost([post]);
+        });
     }, [postId]);
 
     return (
@@ -63,7 +69,7 @@ const ShowPosts = props => {
             )}
             {post && <ShowPost posts={post} />}
             {addComment ? (
-                <AddComment />
+                <AddComment postId={postId} />
             ) : (
                 <button onClick={() => setAddComment(true)}>+</button>
             )}
