@@ -1,0 +1,6 @@
+.mainContainer {
+  display: flex;
+  height: 72px;
+  justify-content: flex-start;
+  background-color: var(--menuColor);
+}

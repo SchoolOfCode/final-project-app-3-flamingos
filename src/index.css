@@ -1,41 +1,48 @@
 :root {
-    /* https://coolors.co/1b9abe-06d6a0-f5f5f5-ffc43d-ef476f */
-    --white: #f5f5f5;
-    --blue: #1b9abe;
-    --green: #06d6a0;
-    --yellow: #ffc43d;
-    --pink: #ef476f;
+  /* https://coolors.co/1b9abe-06d6a0-f5f5f5-ffc43d-ef476f */
+  --white: #f5f5f5;
+  --blue: #1b9abe;
+  --green: #06d6a0;
+  --yellow: #ffc43d;
+  --pink: #ef476f;
+  --menuColor: #2a2e43;
+  --logoColor: #f5f5f5;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-        "Helvetica Neue", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #post,
 #live,
 #new {
-    top: 0;
-    bottom: auto;
-    left: 0;
-    right: 0;
-    height: 100;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #29348e;
-    color: darkblue
+  top: 0;
+  bottom: auto;
+  left: 0;
+  right: 0;
+  height: 100;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #29348e;
+  color: darkblue;
 }
 
 #post > svg,
 #new > svg,
-#live > svg {
-    fill: #ffba56;
-    padding: 0 20px;
+#live > svg,
+#logo > svg {
+  fill: #f5f5f5;
+  padding: 0 20px;
+}
+
+.mainContainer {
+  display: flex;
 }

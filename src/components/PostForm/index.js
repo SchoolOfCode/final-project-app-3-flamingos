@@ -3,27 +3,27 @@ import css from "./PostForm.module.css";
 import config from "../../config";
 
 const PostForm = props => {
-    const [description, setDescription] = useState("");
-    const [category, setCategory] = useState("travel");
-    const [file, setFile] = useState(null);
+  const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("travel");
+  const [file, setFile] = useState(null);
 
-    const handleChange = event => {
-        const { value } = event.target;
-        setDescription(value);
-    };
+  const handleChange = event => {
+    const { value } = event.target;
+    setDescription(value);
+  };
 
-    const handleSelect = event => {
-        const { value } = event.target;
-        setCategory(value);
-    };
+  const handleSelect = event => {
+    const { value } = event.target;
+    setCategory(value);
+  };
 
-    const handleFile = event => {
-        const file = event.target.files[0];
-        setFile(file);
-    };
+  const handleFile = event => {
+    const file = event.target.files[0];
+    setFile(file);
+  };
 
-    const handleSubmit = async event => {
-        event.preventDefault();
+  const handleSubmit = async event => {
+    event.preventDefault();
 
         const formData = new FormData();
         formData.append("file", file);
