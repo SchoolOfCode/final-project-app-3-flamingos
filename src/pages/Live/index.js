@@ -1,14 +1,25 @@
 import React, { useState, useEffect } from "react";
-import Location from "../components/Location";
-import PostForm from "../components/PostForm";
-import Logo from "../components/Logo";
-import Nav from "../components/Nav";
+import config from "../../config";
+import Location from "../../components/Location";
+import Logo from "../../components/Logo";
+import Nav from "../../components/Nav";
 
-import "../index.css";
+import io from "socket.io-client";
 
-const Post = props => {
+import "../../index.css";
+
+const socket = io(config.SOC_URL, { transports: ["websocket"] });
+
+const Live = props => {
     const [location, setLocation] = useState({});
+    const [posts, setPosts] = useState([]);
     // const [zoom, setZoom] = useState(props.zoom);
+
+    useEffect(() => {
+        socket.on("post", post => {
+            setPosts([...posts, post]);
+        });
+    }, [posts]);
 
     useEffect(() => {
         if (navigator && navigator.geolocation) {
@@ -20,19 +31,21 @@ const Post = props => {
             });
         }
     }, []);
+
     return (
-        <div id="new">
+        <div id="live">
             <Logo />
             <Location
-                zoom={11}
+                zoom={12}
                 lat={location.lat}
                 long={location.long}
+                markers={posts}
                 current={true}
                 colour="dodgerblue"
             />
-            <PostForm lat={location.lat} long={location.long} />
             <Nav />
         </div>
     );
 };
-export default Post;
+
+export default Live;

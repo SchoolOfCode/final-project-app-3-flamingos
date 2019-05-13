@@ -1,12 +1,12 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 
-import Home from "./Home.js";
-import Live from "./Live.js";
-import Login from "./Login.js";
-import New from "./New.js";
-import Post from "./Post.js";
-import Register from "./Register.js";
+import Home from "./Home";
+import Live from "./Live";
+import Login from "./Login";
+import New from "./New";
+import Post from "./Post";
+import Register from "./Register";
 
 storiesOf("Pages|Home", module)
     .add("Desktop", () => <Home />)

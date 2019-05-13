@@ -1,8 +1,8 @@
 import React from "react";
-import Nav from "../components/Nav";
-import RegisterForm from "../components/RegisterForm";
+import Nav from "../../components/Nav";
+import RegisterForm from "../../components/RegisterForm";
 
-import "../index.css";
+import "../../index.css";
 
 const Register = props => {
     return (
