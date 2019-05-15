@@ -1,24 +1,24 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
 }
 
 .container > * {
-    margin: 10px;
+  margin: 10px;
 }
 
 .photo {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 .submit {
-    background-color: #FF7D62;
+  background-color: #ff7d62;
 }
 
-@media screen and (min-width: 600px) {
-    .container {
-        width: 50%;
-    }
+@media screen and (min-width: 800px) {
+  .container {
+    width: 30%;
+  }
 }

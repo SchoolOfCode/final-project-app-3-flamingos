@@ -1,11 +1,14 @@
 :root {
   /* https://coolors.co/1b9abe-06d6a0-f5f5f5-ffc43d-ef476f */
-  --white: #faf9f9;
+  --white: #f5f7fa;
   --hoverBlue: #bee3db;
   --nextBlue: #89b0ae;
   --brown: #786452;
   --menuColor: #2a2e43;
-  --logoColor: #faf9f9;
+  --logoColor: #f5f7fa;
+  --background-color-gradient-2: #f5f7fa;
+  --background-color-gradient-1: #c3cfe2;
+  --header-padding: 3%;
 }
 
 body {

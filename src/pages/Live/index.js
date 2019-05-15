@@ -37,21 +37,21 @@ const Live = props => {
 
   return (
     <div className={css.mainContainer}>
-      <div id="live">
-        <MobileHeader />
-        <div className={css.mapContainer}>
-          <Location
-            className={css.map}
-            zoom={12}
-            lat={location.lat}
-            long={location.long}
-            markers={posts}
-            current={true}
-            colour="dodgerblue"
-          />
-        </div>
+      <MobileHeader />
+      <h1 className={css.header}>live</h1>
+      <div className={css.mapContainer}>
+        <Location
+          className={css.map}
+          zoom={12}
+          lat={location.lat}
+          long={location.long}
+          markers={posts}
+          current={true}
+          colour="dodgerblue"
+        />
         <div className={css.postContainer}>
-          <PostTest />
+          <h3 className={css.postHeader}>This is post Header</h3>
+          <div className={css.postScroller}>This is the post container</div>
         </div>
       </div>
     </div>
