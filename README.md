@@ -48,6 +48,23 @@
     -   goes to the Watu website
     -   registers for an account
     -   requests to be notified about 1st aid emergencies in her local area
+    
+#### David
+
+-   _Age_: 50
+-   _Education_: BA English
+-   _Social Networks_: WhatsApp
+-   _Occupation_: Police Officer
+-   _Marital Status_: Married
+-   _Why do they use Watu_: Police resources are constrained and stretched due to goverment funding. 
+    Would like to see an app that helps people to report crimes without taking up resources for more serious crimes to be dealt with         promptly
+    Would like the community to be able to report crimes and they be dealt with, with the appropriate level of RISK
+    Feels part of the community and feels what affects others affects her.
+-   _What do they want to do with Watu_: Hears about Watu so:
+    -   goes to the Watu website
+    -   registers for an account
+    -   Will use the website in his work to understand when there is a potential crime in the local area that he can help with.
+    -   Can see when comments have been added by the police to resolve local issues. 
 
 #### Laura:
 
