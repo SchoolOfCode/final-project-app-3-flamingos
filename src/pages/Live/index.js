@@ -7,16 +7,28 @@ import io from "socket.io-client";
 
 import "../../index.css";
 import MobileHeader from "../../components/MobileHeader";
-import PostTest from "../../components/PostTest";
+import SinglePost from "../../components/SinglePost";
 
 const socket = io(config.SOC_URL, { transports: ["websocket"] });
 
 const Live = props => {
   const [location, setLocation] = useState({});
   const [posts, setPosts] = useState([]);
+  const [postList, setPostList] = useState([]);
   // const [zoom, setZoom] = useState(props.zoom);
 
-  useEffect(() => {});
+  useEffect(() => {
+    try {
+      async function fetchData() {
+        const response = await fetch("http://j0nn.io/function/watu-posts-get");
+        const data = await response.json();
+        setPostList(data);
+      }
+      fetchData();
+    } catch (err) {
+      console.error({ fetch: err });
+    }
+  }, [postList]);
 
   useEffect(() => {
     socket.on("post", post => {
@@ -51,7 +63,12 @@ const Live = props => {
         />
         <div className={css.postContainer}>
           <h3 className={css.postHeader}>This is post Header</h3>
-          <div className={css.postScroller}>This is the post container</div>
+          <div className={css.postScrollContainer}>
+            {console.log(postList)}
+            {/* {postList.map((item, idx) => {
+              return <SinglePost post={item} />;
+            })} */}
+          </div>
         </div>
       </div>
     </div>
