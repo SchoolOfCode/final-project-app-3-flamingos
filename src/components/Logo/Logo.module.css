@@ -1,9 +1,6 @@
-.svg {
-  height: 60px;
-  width: 120px;
-}
-
-#logo > svg {
+.logo {
   fill: #f5f5f5;
   padding: 0 20px;
+  height: 60px;
+  width: 120px;
 }

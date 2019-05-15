@@ -1,0 +1,16 @@
+.attributes {
+  background-color: var(--nextBlue);
+  border: none;
+  color: var(--white);
+  margin: 10px;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 35px;
+  font-size: 16px;
+}
+
+.attributes:hover {
+  background-color: var(--hoverBlue);
+}

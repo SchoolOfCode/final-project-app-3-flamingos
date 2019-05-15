@@ -3,10 +3,14 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "@material-ui/core": "^3.9.3",
+        "axios": "^0.18.0",
         "classnames": "^2.2.6",
         "google-map-react": "^1.1.4",
+        "jss": "^9.8.7",
         "react": "^16.8.6",
         "react-dom": "^16.8.6",
+        "react-jss": "^8.6.1",
         "react-router-dom": "^5.0.0",
         "react-scripts": "3.0.0",
         "socket.io-client": "^2.2.0"

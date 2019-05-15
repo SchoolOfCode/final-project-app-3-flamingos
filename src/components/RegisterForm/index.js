@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import css from "./RegisterForm.module.css";
 import config from "../../config";
+import "../../index.css";
+import TextField from "@material-ui/core/TextField";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
+import OutlinedInput from "@material-ui/core/OutlinedInput";
 
 const RegisterForm = props => {
   const [phoneCountry, setPhoneCountry] = useState("+44");
@@ -64,16 +69,22 @@ const RegisterForm = props => {
   return (
     <form className={css.container} onSubmit={handleSubmit}>
       <div className={css.phone}>
-        <select
-          name="phoneCountry"
-          className={css.phoneCountry}
-          onChange={handlePhoneCountry}
+        <Select
           value={phoneCountry}
+          onChange={handlePhoneCountry}
+          input={
+            <OutlinedInput
+              name="telephone-number"
+              id="outlined-tel-number-simple"
+            />
+          }
         >
-          <option value="+44">+44</option>
-        </select>
-        <input
-          className={css.phoneNumber}
+          <MenuItem value={10}>+44</MenuItem>
+        </Select>
+        <TextField
+          label="phone number"
+          variant="outlined"
+          classes={{ root: css.border }}
           id="phoneNumber"
           name="phoneNumber"
           type="text"
@@ -83,7 +94,9 @@ const RegisterForm = props => {
           onChange={handlePhoneNumber}
         />
       </div>
-      <input
+      <TextField
+        label="name"
+        variant="outlined"
         className={css.name}
         id="name"
         name="name"
@@ -93,7 +106,9 @@ const RegisterForm = props => {
         value={name}
         onChange={handleName}
       />
-      <input
+      <TextField
+        label="display name"
+        variant="outlined"
         className={css.displayName}
         id="displayName"
         name="displayName"
@@ -103,7 +118,9 @@ const RegisterForm = props => {
         value={displayName}
         onChange={handleDisplayName}
       />
-      <input
+      <TextField
+        label="password"
+        variant="outlined"
         className={css.password}
         id="password"
         name="password"
@@ -113,7 +130,9 @@ const RegisterForm = props => {
         value={password}
         onChange={handlePassword}
       />
-      <input className={css.submit} id="submit" name="submit" type="submit" />
+      <div className={css.submitContainer}>
+        <input className={css.submit} id="submit" name="submit" type="submit" />
+      </div>
     </form>
   );
 };

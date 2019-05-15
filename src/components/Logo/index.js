@@ -5,7 +5,7 @@ import css from "./Logo.module.css";
 const Logo = () => {
   return (
     <div id="logo">
-      <svg version="1.1" viewBox="0 0 22.822728 6.4281295" className={css.svg}>
+      <svg version="1.1" viewBox="0 0 22.822728 6.4281295" className={css.logo}>
         <g transform="translate(-87.618398,-27.690699)" id="layer1">
           <path
             id="path3723"

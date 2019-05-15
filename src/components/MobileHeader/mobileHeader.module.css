@@ -1,6 +1,18 @@
 .mainContainer {
   display: flex;
   height: 72px;
-  justify-content: flex-start;
   background-color: var(--menuColor);
+  padding-left: 15px;
+  width: 100%;
+}
+
+.logo {
+  width: 50%;
+}
+
+.navbar {
+  display: flex;
+  width: 50%;
+  height: 100%;
+  align-items: center;
 }
