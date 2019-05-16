@@ -18,23 +18,23 @@ const Live = props => {
   // const [zoom, setZoom] = useState(props.zoom);
 
   useEffect(() => {
+    async function fetchData() {
+      const response = await fetch("http://j0nn.io/function/watu-posts-get");
+      const data = await response.json();
+      setPostList(data);
+    }
     try {
-      async function fetchData() {
-        const response = await fetch("http://j0nn.io/function/watu-posts-get");
-        const data = await response.json();
-        setPostList(data);
-      }
       fetchData();
     } catch (err) {
       console.error({ fetch: err });
     }
-  }, [postList]);
+  }, []);
 
   useEffect(() => {
     socket.on("post", post => {
-      setPosts([...posts, post]);
+      setPostList([...postList, post]);
     });
-  }, [posts]);
+  }, [postList]);
 
   useEffect(() => {
     if (navigator && navigator.geolocation) {
@@ -57,7 +57,7 @@ const Live = props => {
           zoom={12}
           lat={location.lat}
           long={location.long}
-          markers={posts}
+          markers={postList}
           current={true}
           colour="dodgerblue"
         />
@@ -65,9 +65,11 @@ const Live = props => {
           <h3 className={css.postHeader}>This is post Header</h3>
           <div className={css.postScrollContainer}>
             {console.log(postList)}
-            {/* {postList.map((item, idx) => {
+            {postList.map((item, idx) => {
               return <SinglePost post={item} />;
-            })} */}
+            })}
+
+            {/* {postList && <SinglePost posts={postList} />} */}
           </div>
         </div>
       </div>
