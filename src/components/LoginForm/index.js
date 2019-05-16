@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import css from "./LoginForm.module.css";
 import config from "../../config";
+import { Link, BrowserRouter as Router } from "react-router-dom";
 
 const LoginForm = props => {
   const [phoneCountry, setPhoneCountry] = useState("+44");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoggedIn, setLoggedIn] = useState(false);
 
   const handlePhoneCountry = event => {
     const { value } = event.target;
@@ -24,7 +26,7 @@ const LoginForm = props => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    fetch(`${config.API_URL}/authenticate`, {
+    fetch(`${config.API_URL}`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -40,6 +42,7 @@ const LoginForm = props => {
         console.log(data);
         if (data.token) {
           localStorage.setItem("token", data.token);
+          setLoggedIn((isLoggedIn = true));
         }
       })
       .catch(err => console.error(err))
