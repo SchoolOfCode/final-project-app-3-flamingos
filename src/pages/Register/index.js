@@ -4,8 +4,6 @@ import css from "./Register.module.css";
 import MobileHeader from "../../components/MobileHeader";
 import "../../index.css";
 
-import "../../index.css";
-
 const Register = props => {
   return (
     <div className={css.mainContainer}>
