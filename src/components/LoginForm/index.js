@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import css from "./LoginForm.module.css";
 import config from "../../config";
+
+import { Link, BrowserRouter as Router } from "react-router-dom";
+import Select from "@material-ui/core/Select";
+import TextField from "@material-ui/core/TextField";
+import OutlinedInput from "@material-ui/core/OutlinedInput";
+
 import { Route } from "react-router-dom";
+
 
 const LoginForm = props => {
   const [phoneCountry, setPhoneCountry] = useState("+44");
@@ -62,15 +69,15 @@ const LoginForm = props => {
   ) : (
     <form className={css.container} onSubmit={handleSubmit}>
       <div className={css.phone}>
-        <select
+        <Select>
           name="phoneCountry"
           className={css.phoneCountry}
           onChange={handlePhoneCountry}
           value={phoneCountry}
         >
           <option value="+44">+44</option>
-        </select>
-        <input
+        </Select>
+        <TextField
           className={css.phoneNumber}
           id="phoneNumber"
           name="phoneNumber"
@@ -81,7 +88,7 @@ const LoginForm = props => {
           onChange={handlePhoneNumber}
         />
       </div>
-      <input
+      <TextField
         className={css.password}
         id="password"
         name="password"
