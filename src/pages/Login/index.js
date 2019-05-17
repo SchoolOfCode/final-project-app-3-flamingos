@@ -9,7 +9,7 @@ const Login = props => {
     <div id="login">
       <h1>Login</h1>
       <LoginForm />
-      <Nav />
+      {/* <Nav /> */}
     </div>
   );
 };

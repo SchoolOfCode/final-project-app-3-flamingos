@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import css from "./LoginForm.module.css";
 import config from "../../config";
-import { Route} from "react-router-dom";
+import { Route } from "react-router-dom";
 
 const LoginForm = props => {
   const [phoneCountry, setPhoneCountry] = useState("+44");
@@ -54,9 +54,11 @@ const LoginForm = props => {
   };
 
   return isLoggedIn ? (
-    <Route render={({history})=>{
-       history.push('/new')
-    }} />
+    <Route
+      render={({ history }) => {
+        history.push("/new");
+      }}
+    />
   ) : (
     <form className={css.container} onSubmit={handleSubmit}>
       <div className={css.phone}>

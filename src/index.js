@@ -26,20 +26,20 @@ import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 // import theme from "../Themes/theme";
 
 const theme = createMuiTheme({
-    overrides: {
-        // Name of the component ⚛️ / style sheet
-        MuiOutlinedInput: {
-            // Name of the rule
-            notchedOutline: {
-                borderColor: "white !important"
-            }
-        },
-        MuiFormLabel: {
-            focused: {
-                color: "white !important"
-            }
-        }
+  overrides: {
+    // Name of the component ⚛️ / style sheet
+    MuiOutlinedInput: {
+      // Name of the rule
+      notchedOutline: {
+        borderColor: "white !important"
+      }
+    },
+    MuiFormLabel: {
+      focused: {
+        color: "white !important"
+      }
     }
+  }
 });
 
 const styleNode = document.createComment("jss-insertion-point");
@@ -47,30 +47,30 @@ document.head.insertBefore(styleNode, document.head.firstChild);
 
 const generateClassName = createGenerateClassName();
 const jss = create({
-    ...jssPreset(),
-    // We define a custom insertion point that JSS will look for injecting the styles in the DOM.
-    insertionPoint: "jss-insertion-point"
+  ...jssPreset(),
+  // We define a custom insertion point that JSS will look for injecting the styles in the DOM.
+  insertionPoint: "jss-insertion-point"
 });
 
 serviceWorker.unregister();
 
 const routing = (
-    <JssProvider jss={jss} generateClassName={generateClassName}>
-        <MuiThemeProvider theme={theme}>
-            <Router>
-                <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route path="/live" component={Live} />
-                    <Route path="/register" component={Register} />
-                    <Route path="/login" component={Login} />
-                    <Route path="/new" component={New} />
-                    <Route exact path="/c/:id" component={Confirm} />
-                    <Route exact path="/post/:id" component={Post} />
-                    <Route component={Four04} />
-                </Switch>
-            </Router>
-        </MuiThemeProvider>
-    </JssProvider>
+  <JssProvider jss={jss} generateClassName={generateClassName}>
+    <MuiThemeProvider theme={theme}>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/live" component={Live} />
+          <Route path="/register" component={Register} />
+          <Route path="/login" component={Login} />
+          <Route path="/new" component={New} />
+          <Route exact path="/c/:id" component={Confirm} />
+          <Route exact path="/post/:id" component={Post} />
+          <Route component={Four04} />
+        </Switch>
+      </Router>
+    </MuiThemeProvider>
+  </JssProvider>
 );
 
 ReactDOM.render(routing, document.getElementById("root"));
