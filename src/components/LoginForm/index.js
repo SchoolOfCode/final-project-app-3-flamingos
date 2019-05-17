@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import css from "./LoginForm.module.css";
 import config from "../../config";
+
 import { Link, BrowserRouter as Router } from "react-router-dom";
 import Select from "@material-ui/core/Select";
 import TextField from "@material-ui/core/TextField";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
+
+import { Route } from "react-router-dom";
+
 
 const LoginForm = props => {
   const [phoneCountry, setPhoneCountry] = useState("+44");
@@ -56,7 +60,13 @@ const LoginForm = props => {
       });
   };
 
-  return (
+  return isLoggedIn ? (
+    <Route
+      render={({ history }) => {
+        history.push("/new");
+      }}
+    />
+  ) : (
     <form className={css.container} onSubmit={handleSubmit}>
       <div className={css.phone}>
         <Select>

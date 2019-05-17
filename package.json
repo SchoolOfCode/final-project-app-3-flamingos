@@ -1,12 +1,13 @@
 {
     "name": "final-project-app-3-flamingos",
-    "version": "0.1.0",
+    "homepage": "https://watu.netlify.com",
+    "version": "0.7.0",
     "private": true,
     "dependencies": {
         "@material-ui/core": "^3.9.3",
-        "axios": "^0.18.0",
         "classnames": "^2.2.6",
         "google-map-react": "^1.1.4",
+        "history": "^4.9.0",
         "jss": "^9.8.7",
         "react": "^16.8.6",
         "react-dom": "^16.8.6",

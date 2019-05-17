@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Route, BrowserRouter as Router } from "react-router-dom";
+import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import JssProvider from "react-jss/lib/JssProvider";
 import { create } from "jss";
 import { createGenerateClassName, jssPreset } from "@material-ui/core/styles";
@@ -10,10 +10,12 @@ import "../src/index.css";
 // Import pages
 import Home from "./pages/Home";
 import New from "./pages/New";
-import Post from "./pages/Post";
+import Post from "./pages/Post"; /**shows one post ---not yet implemented */
 import Live from "./pages/Live";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Four04 from "./pages/Four04";
+import Confirm from "./pages/Confirm";
 
 import * as serviceWorker from "./serviceWorker";
 // If you want your app to work offline and load faster, you can change
@@ -56,12 +58,16 @@ const routing = (
   <JssProvider jss={jss} generateClassName={generateClassName}>
     <MuiThemeProvider theme={theme}>
       <Router>
-        <Route exact path="/" component={Home} />
-        <Route path="/live" component={Live} />
-        <Route path="/register" component={Register} />
-        <Route path="/login" component={Login} />
-        <Route path="/new" component={New} />
-        <Route exact path="/post/:id" component={Post} />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/live" component={Live} />
+          <Route path="/register" component={Register} />
+          <Route path="/login" component={Login} />
+          <Route path="/new" component={New} />
+          <Route exact path="/c/:id" component={Confirm} />
+          <Route exact path="/post/:id" component={Post} />
+          <Route component={Four04} />
+        </Switch>
       </Router>
     </MuiThemeProvider>
   </JssProvider>
