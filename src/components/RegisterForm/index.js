@@ -58,8 +58,20 @@ const RegisterForm = props => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
-        handleRegister((isRegistered = true));
+        console.log(data.message);
+        if (data.message === "Number exists") {
+          handleRegister(true);
+        } else if (data.message === "User created") {
+          return (
+            <Route
+              render={({ history }) => {
+                history.push("/login");
+              }}
+            />
+          );
+        } else {
+          return;
+        }
       })
       .catch(err => console.error(err))
       .finally(() => {
@@ -71,13 +83,14 @@ const RegisterForm = props => {
       });
   };
 
-  return isRegistered ? (
-    <Route
-      render={({ history }) => {
-        history.push("/login");
-      }}
-    />
-  ) : (
+  // return isRegistered ? (
+  //   <Route
+  //     render={({ history }) => {
+  //       history.push("/login");
+  //     }}
+  //   />
+  // ) : (
+  return (
     <form className={css.container} onSubmit={handleSubmit}>
       <div className={css.phone}>
         <Select
@@ -142,7 +155,27 @@ const RegisterForm = props => {
         onChange={handlePassword}
       />
       <div className={css.submitContainer}>
-        <input className={css.submit} id="submit" name="submit" type="submit" />
+        {isRegistered ? (
+          <div>
+            <div style={{ color: "white", "padding-top": "20px" }}>
+              You've already registered, click below to sign in
+            </div>
+            <input
+              className={css.submit}
+              id="signin"
+              name="submit"
+              type="submit"
+              value="Sign In"
+            />
+          </div>
+        ) : (
+          <input
+            className={css.submit}
+            id="submit"
+            name="submit"
+            type="submit"
+          />
+        )}
       </div>
     </form>
   );
