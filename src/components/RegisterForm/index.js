@@ -7,6 +7,8 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import { Route } from "react-router-dom";
+import Button from "../../components/Button";
+import { Link } from "react-router-dom";
 
 const RegisterForm = props => {
   const [phoneCountry, setPhoneCountry] = useState("+44");
@@ -58,8 +60,20 @@ const RegisterForm = props => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
-        handleRegister((isRegistered = true));
+        console.log(data.message);
+        if (data.message === "Number exists") {
+          handleRegister(true);
+        } else if (data.message === "User created") {
+          return (
+            <Route
+              render={({ history }) => {
+                history.push("/login");
+              }}
+            />
+          );
+        } else {
+          return;
+        }
       })
       .catch(err => console.error(err))
       .finally(() => {
@@ -71,13 +85,14 @@ const RegisterForm = props => {
       });
   };
 
-  return isRegistered ? (
-    <Route
-      render={({ history }) => {
-        history.push("/login");
-      }}
-    />
-  ) : (
+  // return isRegistered ? (
+  //   <Route
+  //     render={({ history }) => {
+  //       history.push("/login");
+  //     }}
+  //   />
+  // ) : (
+  return (
     <form className={css.container} onSubmit={handleSubmit}>
       <div className={css.phone}>
         <Select
@@ -142,7 +157,23 @@ const RegisterForm = props => {
         onChange={handlePassword}
       />
       <div className={css.submitContainer}>
-        <input className={css.submit} id="submit" name="submit" type="submit" />
+        {isRegistered ? (
+          <div>
+            <div style={{ color: "white", "padding-top": "20px" }}>
+              You've already registered, click below to sign in
+            </div>
+            <Link className={css.link} to="/login">
+              <Button buttonName="Sign In" />
+            </Link>
+          </div>
+        ) : (
+          <input
+            className={css.submit}
+            id="submit"
+            name="submit"
+            type="submit"
+          />
+        )}
       </div>
     </form>
   );

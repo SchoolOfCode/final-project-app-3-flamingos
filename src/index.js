@@ -10,7 +10,7 @@ import "../src/index.css";
 // Import pages
 import Home from "./pages/Home";
 import New from "./pages/New";
-import Post from "./pages/Post";
+import Post from "./pages/Post"; /**shows one post ---not yet implemented */
 import Live from "./pages/Live";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
