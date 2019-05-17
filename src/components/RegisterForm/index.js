@@ -7,6 +7,8 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import { Route } from "react-router-dom";
+import Button from "../../components/Button";
+import { Link } from "react-router-dom";
 
 const RegisterForm = props => {
   const [phoneCountry, setPhoneCountry] = useState("+44");
@@ -160,13 +162,9 @@ const RegisterForm = props => {
             <div style={{ color: "white", "padding-top": "20px" }}>
               You've already registered, click below to sign in
             </div>
-            <input
-              className={css.submit}
-              id="signin"
-              name="submit"
-              type="submit"
-              value="Sign In"
-            />
+            <Link className={css.link} to="/login">
+              <Button buttonName="Sign In" />
+            </Link>
           </div>
         ) : (
           <input
