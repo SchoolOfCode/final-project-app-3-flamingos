@@ -32,7 +32,19 @@
 .buttonContainer {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 50%;
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+button {
+  width: 100%;
 }
 
 @media only screen and (min-width: 750px) {

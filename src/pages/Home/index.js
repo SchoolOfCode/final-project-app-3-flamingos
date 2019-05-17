@@ -3,6 +3,7 @@ import css from "./Home.module.css";
 import MobileHeader from "../../components/MobileHeader";
 import "../../index.css";
 import Button from "../../components/Button";
+import { Link } from "react-router-dom";
 
 const Home = props => {
   return (
@@ -24,8 +25,12 @@ const Home = props => {
         </svg>
         <p className={css.slogan}>you can make the difference.</p>
         <div className={css.buttonContainer}>
-          <Button buttonName="Sign In" />
-          <Button buttonName="Register" />
+          <Link className={css.link} to="/login">
+            <Button buttonName="Sign In" />
+          </Link>
+          <Link className={css.link} to="/register">
+            <Button buttonName="Register" />
+          </Link>
         </div>
       </div>
     </div>
