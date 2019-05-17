@@ -6,6 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
+import { Route } from "react-router-dom";
 
 const RegisterForm = props => {
   const [phoneCountry, setPhoneCountry] = useState("+44");
@@ -13,6 +14,7 @@ const RegisterForm = props => {
   const [name, setName] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [password, setPassword] = useState("");
+  let [isRegistered, handleRegister] = useState(false);
 
   const handlePhoneCountry = event => {
     const { value } = event.target;
@@ -41,7 +43,7 @@ const RegisterForm = props => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    fetch(`${config.API_URL}/users`, {
+    fetch(`${config.REACT_APP_ADD_USER}/users`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -55,7 +57,10 @@ const RegisterForm = props => {
       })
     })
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => {
+        console.log(data);
+        handleRegister((isRegistered = true));
+      })
       .catch(err => console.error(err))
       .finally(() => {
         setPhoneCountry("");
@@ -66,7 +71,13 @@ const RegisterForm = props => {
       });
   };
 
-  return (
+  return isRegistered ? (
+    <Route
+      render={({ history }) => {
+        history.push("/login");
+      }}
+    />
+  ) : (
     <form className={css.container} onSubmit={handleSubmit}>
       <div className={css.phone}>
         <Select
@@ -79,7 +90,7 @@ const RegisterForm = props => {
             />
           }
         >
-          <MenuItem value={10}>+44</MenuItem>
+          <MenuItem value={"+44"}>+44</MenuItem>
         </Select>
         <TextField
           label="phone number"
