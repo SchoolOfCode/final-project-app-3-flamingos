@@ -7,7 +7,7 @@ const LoginForm = props => {
   const [phoneCountry, setPhoneCountry] = useState("+44");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoggedIn, setLoggedIn] = useState(false);
+  let [isLoggedIn, setLoggedIn] = useState(false);
 
   const handlePhoneCountry = event => {
     const { value } = event.target;
