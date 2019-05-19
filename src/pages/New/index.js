@@ -3,12 +3,14 @@ import Location from "../../components/Location";
 import PostForm from "../../components/PostForm";
 import MobileHeader from "../../components/MobileHeader";
 import css from "./New.module.css";
+import { Route } from "react-router-dom";
 
 import "../../index.css";
 import { CssBaseline } from "@material-ui/core";
 
 const Post = props => {
   const [location, setLocation] = useState({});
+  const token = localStorage.getItem("token");
   // const [zoom, setZoom] = useState(props.zoom);
 
   useEffect(() => {
@@ -21,7 +23,7 @@ const Post = props => {
       });
     }
   }, []);
-  return (
+  return token ? (
     <div className={css.mainContainer}>
       <MobileHeader />
       <h1 className={css.header}>Post</h1>
@@ -36,6 +38,12 @@ const Post = props => {
         <PostForm lat={location.lat} long={location.long} />
       </div>
     </div>
+  ) : (
+    <Route
+      render={({ history }) => {
+        history.push("/live");
+      }}
+    />
   );
 };
 export default Post;

@@ -1,8 +1,15 @@
 import React, { useState, useContext } from "react";
 import css from "./LoginForm.module.css";
 import config from "../../config";
+
+import { Link, BrowserRouter as Router } from "react-router-dom";
+import Select from "@material-ui/core/Select";
+import TextField from "@material-ui/core/TextField";
+import OutlinedInput from "@material-ui/core/OutlinedInput";
+
 import { Route } from "react-router-dom";
 import { LoggedInContext } from "../../components/LoggedInContext";
+
 
 const LoginForm = props => {
     const [phoneCountry, setPhoneCountry] = useState("+44");
@@ -54,52 +61,47 @@ const LoginForm = props => {
             });
     };
 
-    return isLoggedIn ? (
-        <Route
-            render={({ history }) => {
-                history.push("/new");
-            }}
+  return isLoggedIn ? (
+    <Route
+      render={({ history }) => {
+        history.push("/new");
+      }}
+    />
+  ) : (
+    <form className={css.container} onSubmit={handleSubmit}>
+      <div className={css.phone}>
+        <Select>
+          name="phoneCountry"
+          className={css.phoneCountry}
+          onChange={handlePhoneCountry}
+          value={phoneCountry}
+        >
+          <option value="+44">+44</option>
+        </Select>
+        <TextField
+          className={css.phoneNumber}
+          id="phoneNumber"
+          name="phoneNumber"
+          type="text"
+          placeholder="7412345678"
+          required={true}
+          value={phoneNumber}
+          onChange={handlePhoneNumber}
         />
-    ) : (
-        <form className={css.container} onSubmit={handleSubmit}>
-            <div className={css.phone}>
-                <select
-                    name="phoneCountry"
-                    className={css.phoneCountry}
-                    onChange={handlePhoneCountry}
-                    value={phoneCountry}
-                >
-                    <option value="+44">+44</option>
-                </select>
-                <input
-                    className={css.phoneNumber}
-                    id="phoneNumber"
-                    name="phoneNumber"
-                    type="text"
-                    placeholder="7412345678"
-                    required={true}
-                    value={phoneNumber}
-                    onChange={handlePhoneNumber}
-                />
-            </div>
-            <input
-                className={css.password}
-                id="password"
-                name="password"
-                type="password"
-                placeholder="password"
-                required={true}
-                value={password}
-                onChange={handlePassword}
-            />
-            <input
-                className={css.submit}
-                id="submit"
-                name="submit"
-                type="submit"
-            />
-        </form>
-    );
+      </div>
+      <TextField
+        className={css.password}
+        id="password"
+        name="password"
+        type="password"
+        placeholder="password"
+        required={true}
+        value={password}
+        onChange={handlePassword}
+      />
+      <input className={css.submit} id="submit" name="submit" type="submit" />
+    </form>
+  );
 };
 
 export default LoginForm;

@@ -8,6 +8,7 @@ import io from "socket.io-client";
 import "../../index.css";
 import MobileHeader from "../../components/MobileHeader";
 import SinglePost from "../../components/SinglePost";
+import MobileMenu from "../../components/MobileMenu";
 
 const socket = io(config.SOC_URL, { transports: ["websocket"] });
 
@@ -68,9 +69,10 @@ const Live = props => {
             {postList.map((item, idx) => {
               return <SinglePost post={item} />;
             })}
-
-            {/* {postList && <SinglePost posts={postList} />} */}
           </div>
+        </div>
+        <div className={css.mobileMenuContainer}>
+          <MobileMenu />
         </div>
       </div>
     </div>
