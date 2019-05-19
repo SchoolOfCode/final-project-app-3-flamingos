@@ -1,99 +1,105 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import css from "./LoginForm.module.css";
 import config from "../../config";
 import { Route } from "react-router-dom";
+import { LoggedInContext } from "../../components/LoggedInContext";
 
 const LoginForm = props => {
-  const [phoneCountry, setPhoneCountry] = useState("+44");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [password, setPassword] = useState("");
-  let [isLoggedIn, setLoggedIn] = useState(false);
+    const [phoneCountry, setPhoneCountry] = useState("+44");
+    const [phoneNumber, setPhoneNumber] = useState("");
+    const [password, setPassword] = useState("");
+    const { isLoggedIn, login } = useContext(LoggedInContext);
 
-  const handlePhoneCountry = event => {
-    const { value } = event.target;
-    setPhoneCountry(value);
-  };
+    const handlePhoneCountry = event => {
+        const { value } = event.target;
+        setPhoneCountry(value);
+    };
 
-  const handlePhoneNumber = event => {
-    const { value } = event.target;
-    setPhoneNumber(value);
-  };
+    const handlePhoneNumber = event => {
+        const { value } = event.target;
+        setPhoneNumber(value);
+    };
 
-  const handlePassword = event => {
-    const { value } = event.target;
-    setPassword(value);
-  };
+    const handlePassword = event => {
+        const { value } = event.target;
+        setPassword(value);
+    };
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    fetch(`${config.API_URL}`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        phone: `${phoneCountry}${phoneNumber}`,
-        password: password
-      })
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        if (data.token) {
-          localStorage.setItem("token", data.token);
-          setLoggedIn((isLoggedIn = true));
-        }
-      })
-      .catch(err => console.error(err))
-      .finally(() => {
-        setPhoneCountry("");
-        setPhoneNumber("");
-        setPassword("");
-      });
-  };
+    const handleSubmit = event => {
+        event.preventDefault();
+        fetch(`${config.API_URL}`, {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                phone: `${phoneCountry}${phoneNumber}`,
+                password: password
+            })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.token) {
+                    localStorage.setItem("token", data.token);
+                    login();
+                }
+            })
+            .catch(err => console.error(err))
+            .finally(() => {
+                setPhoneCountry("");
+                setPhoneNumber("");
+                setPassword("");
+            });
+    };
 
-  return isLoggedIn ? (
-    <Route
-      render={({ history }) => {
-        history.push("/new");
-      }}
-    />
-  ) : (
-    <form className={css.container} onSubmit={handleSubmit}>
-      <div className={css.phone}>
-        <select
-          name="phoneCountry"
-          className={css.phoneCountry}
-          onChange={handlePhoneCountry}
-          value={phoneCountry}
-        >
-          <option value="+44">+44</option>
-        </select>
-        <input
-          className={css.phoneNumber}
-          id="phoneNumber"
-          name="phoneNumber"
-          type="text"
-          placeholder="7412345678"
-          required={true}
-          value={phoneNumber}
-          onChange={handlePhoneNumber}
+    return isLoggedIn ? (
+        <Route
+            render={({ history }) => {
+                history.push("/new");
+            }}
         />
-      </div>
-      <input
-        className={css.password}
-        id="password"
-        name="password"
-        type="password"
-        placeholder="password"
-        required={true}
-        value={password}
-        onChange={handlePassword}
-      />
-      <input className={css.submit} id="submit" name="submit" type="submit" />
-    </form>
-  );
+    ) : (
+        <form className={css.container} onSubmit={handleSubmit}>
+            <div className={css.phone}>
+                <select
+                    name="phoneCountry"
+                    className={css.phoneCountry}
+                    onChange={handlePhoneCountry}
+                    value={phoneCountry}
+                >
+                    <option value="+44">+44</option>
+                </select>
+                <input
+                    className={css.phoneNumber}
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    type="text"
+                    placeholder="7412345678"
+                    required={true}
+                    value={phoneNumber}
+                    onChange={handlePhoneNumber}
+                />
+            </div>
+            <input
+                className={css.password}
+                id="password"
+                name="password"
+                type="password"
+                placeholder="password"
+                required={true}
+                value={password}
+                onChange={handlePassword}
+            />
+            <input
+                className={css.submit}
+                id="submit"
+                name="submit"
+                type="submit"
+            />
+        </form>
+    );
 };
 
 export default LoginForm;
