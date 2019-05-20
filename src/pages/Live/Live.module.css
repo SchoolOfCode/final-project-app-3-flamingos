@@ -37,6 +37,10 @@
   padding-left: var(--header-padding);
 }
 
+.footerContainer {
+  width: 100%;
+}
+
 .mobileMenuContainer {
   display: flex;
   width: 100%;
