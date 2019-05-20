@@ -24,7 +24,6 @@ const LoginForm = props => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const { isLoggedIn, login } = useContext(LoggedInContext);
-  const { classes } = props;
 
   const handlePhoneCountry = event => {
     const { value } = event.target;
