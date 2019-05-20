@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { LoggedInContext } from "../LoggedInContext";
 
 const MobileMenu = () => {
-  const { isLoggedIn, logout } = useContext(LoggedInContext);
+  const { isLoggedIn } = useContext(LoggedInContext);
   return isLoggedIn ? (
     <div className={css.mainContainer}>
       <div className={css.itemContainer}>
