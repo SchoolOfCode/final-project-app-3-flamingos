@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import css from "./LoginForm.module.css";
 import config from "../../config";
 
@@ -8,57 +8,58 @@ import TextField from "@material-ui/core/TextField";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 
 import { Route } from "react-router-dom";
+import { LoggedInContext } from "../../components/LoggedInContext";
 
 
 const LoginForm = props => {
-  const [phoneCountry, setPhoneCountry] = useState("+44");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [password, setPassword] = useState("");
-  let [isLoggedIn, setLoggedIn] = useState(false);
+    const [phoneCountry, setPhoneCountry] = useState("+44");
+    const [phoneNumber, setPhoneNumber] = useState("");
+    const [password, setPassword] = useState("");
+    const { isLoggedIn, login } = useContext(LoggedInContext);
 
-  const handlePhoneCountry = event => {
-    const { value } = event.target;
-    setPhoneCountry(value);
-  };
+    const handlePhoneCountry = event => {
+        const { value } = event.target;
+        setPhoneCountry(value);
+    };
 
-  const handlePhoneNumber = event => {
-    const { value } = event.target;
-    setPhoneNumber(value);
-  };
+    const handlePhoneNumber = event => {
+        const { value } = event.target;
+        setPhoneNumber(value);
+    };
 
-  const handlePassword = event => {
-    const { value } = event.target;
-    setPassword(value);
-  };
+    const handlePassword = event => {
+        const { value } = event.target;
+        setPassword(value);
+    };
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    fetch(`${config.API_URL}`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        phone: `${phoneCountry}${phoneNumber}`,
-        password: password
-      })
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        if (data.token) {
-          localStorage.setItem("token", data.token);
-          setLoggedIn((isLoggedIn = true));
-        }
-      })
-      .catch(err => console.error(err))
-      .finally(() => {
-        setPhoneCountry("");
-        setPhoneNumber("");
-        setPassword("");
-      });
-  };
+    const handleSubmit = event => {
+        event.preventDefault();
+        fetch(`${config.API_URL}`, {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                phone: `${phoneCountry}${phoneNumber}`,
+                password: password
+            })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.token) {
+                    localStorage.setItem("token", data.token);
+                    login();
+                }
+            })
+            .catch(err => console.error(err))
+            .finally(() => {
+                setPhoneCountry("");
+                setPhoneNumber("");
+                setPassword("");
+            });
+    };
 
   return isLoggedIn ? (
     <Route
