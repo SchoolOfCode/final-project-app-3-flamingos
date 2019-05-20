@@ -1,7 +1,6 @@
 import React from "react";
 import css from "../MobileMenu/mobileMenu.module.css";
 import "../../../src/index.css";
-import ProfileLogo from "../../components/ProfileLogo";
 import profile from "../../images/profile.svg";
 import live from "../../images/live.svg";
 import post from "../../images/plane.svg";
