@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import config from "../../config";
 import Location from "../../components/Location";
 import css from "./Live.module.css";
+import { LoggedInContext } from "../LoggedInContext";
 
 import io from "socket.io-client";
 
@@ -9,6 +10,7 @@ import "../../index.css";
 import MobileHeader from "../../components/MobileHeader";
 import SinglePost from "../../components/SinglePost";
 import MobileMenu from "../../components/MobileMenu";
+import Footer from "../../components/Footer";
 
 const socket = io(config.SOC_URL, { transports: ["websocket"] });
 
@@ -17,6 +19,7 @@ const Live = props => {
   const [posts, setPosts] = useState([]);
   const [postList, setPostList] = useState([]);
   // const [zoom, setZoom] = useState(props.zoom);
+  const { isLoggedIn } = useContext(LoggedInContext);
 
   useEffect(() => {
     async function fetchData() {
@@ -75,6 +78,7 @@ const Live = props => {
           <MobileMenu />
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
