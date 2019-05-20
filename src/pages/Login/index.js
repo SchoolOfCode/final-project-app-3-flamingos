@@ -12,7 +12,6 @@ const Login = props => {
       <div className={css.registerForm}>
         <h1>Login</h1>
         <LoginForm />
-        <Nav />
       </div>
     </div>
   );
