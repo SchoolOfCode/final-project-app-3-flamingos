@@ -20,7 +20,7 @@ const Live = props => {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch("http://j0nn.io/function/watu-posts-get");
+      const response = await fetch("https://j0nn.io/function/watu-posts-get");
       const data = await response.json();
       setPostList(data);
     }
