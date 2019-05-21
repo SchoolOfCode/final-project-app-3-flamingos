@@ -23,6 +23,7 @@ const LoginForm = props => {
   const [phoneCountry, setPhoneCountry] = useState("+44");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
+  const [isValid, setInvalid] = useState(true);
   const { isLoggedIn, login } = useContext(LoggedInContext);
 
   const handlePhoneCountry = event => {
@@ -59,6 +60,8 @@ const LoginForm = props => {
         if (data.token) {
           localStorage.setItem("token", data.token);
           login();
+        } else {
+          setInvalid((isValid = false));
         }
       })
       .catch(err => console.error(err))
