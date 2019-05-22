@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import css from "./PostForm.module.css";
 import config from "../../config";
+import "../../index.css";
 
 const PostForm = props => {
   const [description, setDescription] = useState("");
