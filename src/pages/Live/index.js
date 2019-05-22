@@ -93,8 +93,7 @@ const Live = props => {
           colour="dodgerblue"
         />
         <div className={css.postContainer}>
-          <h3 className={css.postHeader}>This is post Header</h3>
-          <div className={css.postScrollContainer}>
+                 <div className={css.postScrollContainer}>
             {console.log(postList)}
             {postList.map((item, idx) => {
               return <SinglePost post={item} />;
