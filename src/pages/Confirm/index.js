@@ -18,7 +18,7 @@ const Home = props => {
                         postId: postId,
                         token: localStorage.getItem("token")
                     });
-                    let res = await fetch(`${config.CONFIRM_POST_API}`, {
+                    let res = await fetch(`${config.POSTS_CONFIRM}`, {
                         method: "PATCH",
                         headers: {
                             Accept: "application/json",
