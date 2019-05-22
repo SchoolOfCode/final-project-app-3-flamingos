@@ -1,26 +1,30 @@
 const GMAPS_API_KEY =
     process.env.REACT_APP_GMAPS_KEY || process.env.STORYBOOK_GMAPS_KEY;
-const API_URL = process.env.REACT_APP_AUTHENTICATE;
 const SOC_URL = process.env.REACT_APP_SOCKET_URL;
-const POST_TEST = process.env.REACT_APP_TEST_LINK;
-const POSTS_ADD = process.env.REACT_APP_POSTS_ADD;
-const CONFIRM_POST_API = process.env.REACT_APP_POSTS_CONFIRM;
-const REACT_APP_ADD_USER = process.env.REACT_APP_ADD_USER;
-const CLOUD_URL = process.env.REACT_APP_CLOUD_URL;
-const CLOUD_NAME = process.env.REACT_APP_CLOUD_NAME;
 const CLOUD_KEY = process.env.REACT_APP_CLOUD_KEY;
+const CLOUD_NAME = process.env.REACT_APP_CLOUD_NAME;
+const CLOUD_URL = process.env.REACT_APP_CLOUD_URL;
+const AUTHENTICATE = process.env.REACT_APP_AUTHENTICATE;
+const POSTS_ADD = process.env.REACT_APP_POSTS_ADD;
+const POSTS_COMMENTS = process.env.REACT_APP_POSTS_COMMENTS;
+const POSTS_CONFIRM = process.env.REACT_APP_POSTS_CONFIRM;
+const POSTS_GET = process.env.REACT_APP_POSTS_GET;
 const SIGN_IMAGE = process.env.REACT_APP_SIGN_IMAGE;
+const USERS_ADD = process.env.REACT_APP_USER_ADD;
+const USERS_UPDATE = process.env.REACT_APP_USER_UPDATE;
 
 module.exports = {
+    AUTHENTICATE,
+    CLOUD_KEY,
+    CLOUD_NAME,
+    CLOUD_URL,
     GMAPS_API_KEY,
     SOC_URL,
-    API_URL,
-    POST_TEST,
-    CONFIRM_POST_API,
-    REACT_APP_ADD_USER,
-    CLOUD_URL,
-    CLOUD_NAME,
-    CLOUD_KEY,
+    POSTS_ADD,
+    POSTS_COMMENTS,
+    POSTS_CONFIRM,
+    POSTS_GET,
     SIGN_IMAGE,
-    POSTS_ADD
+    USERS_ADD,
+    USERS_UPDATE
 };
