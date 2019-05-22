@@ -3,7 +3,7 @@
   height: 72px;
   background-color: var(--menuColor);
   padding-left: 15px;
-  width: 100%;
+  width: 99%;
 }
 
 .logo {
@@ -19,4 +19,14 @@
 
 .login {
   width: 20%;
+}
+
+@media only screen and (max-width: 400px) {
+  .navbar {
+    display: none;
+  }
+
+  .logo {
+    width: 70%;
+  }
 }
