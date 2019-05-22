@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
 .mainContainer {
   display: flex;
   flex-direction: row;
@@ -8,6 +10,8 @@
   padding: 5px;
   padding-left: 10px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  margin: 5px;
+  font-family: 'Roboto', sans-serif;
 }
 
 .textContainer{
@@ -35,8 +39,8 @@
 }
 
 .iconContainer {
-  width: 20%;
-  height: 50%;
+  width: 15%;
+  height: 60%;
 }
 
 .description {

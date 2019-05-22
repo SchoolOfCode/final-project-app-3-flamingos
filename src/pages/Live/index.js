@@ -102,7 +102,7 @@ const Live = props => {
         </div>
       </div>
       <div className={css.footerContainer}>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </div>
   );
