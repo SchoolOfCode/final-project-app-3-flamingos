@@ -15,11 +15,11 @@ import Footer from "../../components/Footer";
 const socket = io(config.SOC_URL, { transports: ["websocket"] });
 
 const Live = props => {
+  const { isLoggedIn } = useContext(LoggedInContext);
   const [location, setLocation] = useState({});
   const [posts, setPosts] = useState([]);
   const [postList, setPostList] = useState([]);
   // const [zoom, setZoom] = useState(props.zoom);
-  const { isLoggedIn } = useContext(LoggedInContext);
 
   useEffect(() => {
     async function fetchData() {
@@ -51,7 +51,7 @@ const Live = props => {
     }
   }, []);
 
-  return (
+  return isLoggedIn ? (
     <div className={css.mainContainer}>
       <MobileHeader />
       <h1 className={css.header}>live</h1>
@@ -78,7 +78,34 @@ const Live = props => {
           <MobileMenu />
         </div>
       </div>
-      <Footer />
+    </div>
+  ) : (
+    <div className={css.mainContainer}>
+      <MobileHeader />
+      <h1 className={css.header}>live</h1>
+      <div className={css.mapContainer}>
+        <Location
+          className={css.map}
+          zoom={12}
+          lat={location.lat}
+          long={location.long}
+          markers={postList}
+          current={true}
+          colour="dodgerblue"
+        />
+        <div className={css.postContainer}>
+          <h3 className={css.postHeader}>This is post Header</h3>
+          <div className={css.postScrollContainer}>
+            {console.log(postList)}
+            {postList.map((item, idx) => {
+              return <SinglePost post={item} />;
+            })}
+          </div>
+        </div>
+      </div>
+      <div className={css.footerContainer}>
+        <Footer />
+      </div>
     </div>
   );
 };
