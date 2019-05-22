@@ -69,7 +69,7 @@ const Live = props => {
           <h3 className={css.postHeader}>This is post Header</h3>
           <div className={css.postScrollContainer}>
             {console.log(postList)}
-            {postList.map((item, idx) => {
+            {postList.reverse().map((item, idx) => {
               return <SinglePost post={item} />;
             })}
           </div>

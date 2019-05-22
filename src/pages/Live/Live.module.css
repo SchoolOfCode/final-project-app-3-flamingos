@@ -61,6 +61,7 @@
     height: 88%;
     padding-right: 5%;
     border: 2px solid var(--menuColor);
+    overflow-x: scroll;
   }
 
   .mobileMenuContainer {
