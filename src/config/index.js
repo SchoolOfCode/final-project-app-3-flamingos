@@ -6,10 +6,17 @@ const POST_TEST = process.env.REACT_APP_TEST_LINK;
 const POSTS_ADD = process.env.REACT_APP_POSTS_ADD;
 const CONFIRM_POST_API = process.env.REACT_APP_POSTS_CONFIRM;
 const REACT_APP_ADD_USER = process.env.REACT_APP_ADD_USER;
+
 const CLOUD_URL = process.env.REACT_APP_CLOUD_URL;
 const CLOUD_NAME = process.env.REACT_APP_CLOUD_NAME;
 const CLOUD_KEY = process.env.REACT_APP_CLOUD_KEY;
 const SIGN_IMAGE = process.env.REACT_APP_SIGN_IMAGE;
+
+const POSTS_GET = process.env.REACT_APP_POSTS_GET;
+const POSTS_ADD = process.env.REACT_APP_POSTS_ADD;
+const POSTS_COMMENTS = process.env.REACT_APP_POSTS_COMMENTS;
+const REACT_APP_AUTHENTICATE = process.env.REACT_APP_AUTHENTICATE;
+const REACT_APP_USER_UPDATE = process.env.REACT_APP_USER_UPDATE;
 
 module.exports = {
     GMAPS_API_KEY,
@@ -17,10 +24,15 @@ module.exports = {
     API_URL,
     POST_TEST,
     CONFIRM_POST_API,
-    REACT_APP_ADD_USER,
     CLOUD_URL,
     CLOUD_NAME,
     CLOUD_KEY,
     SIGN_IMAGE,
     POSTS_ADD
+    REACT_APP_ADD_USER,
+    POSTS_GET,
+    POSTS_ADD,
+    POSTS_COMMENTS,
+    REACT_APP_AUTHENTICATE,
+    REACT_APP_USER_UPDATE
 };

@@ -1,14 +1,34 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
 .mainContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 100%;
   height: 120px;
-  background-color: antiquewhite;
+  background-color: var(--white);
+  border-radius: 25px;
+  padding: 5px;
+  padding-left: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  margin: 5px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.textContainer{
+  display: flex;
+  flex-direction: column
+
 }
 
 .usernameContainer {
+  display: flex;
+  flex-direction: row;
   width: 100%;
   height: 20%;
+}
+
+.userNameDescription{
+  margin-right: 10px;
 }
 
 .secondContainer {
@@ -19,11 +39,17 @@
 }
 
 .iconContainer {
-  width: 30%;
+  width: 15%;
+  height: 60%;
 }
 
 .description {
   width: 70%;
+}
+
+.iconImage{
+  height: 100%;
+  width: 100%;
 }
 
 .postIDContainer {

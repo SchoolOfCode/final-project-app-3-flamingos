@@ -4,9 +4,9 @@ import PostForm from "../../components/PostForm";
 import MobileHeader from "../../components/MobileHeader";
 import css from "./New.module.css";
 import { Route } from "react-router-dom";
+import { LoggedInContext } from "../../components/LoggedInContext";
 
 import "../../index.css";
-import { CssBaseline } from "@material-ui/core";
 
 const Post = props => {
   const [location, setLocation] = useState({});
