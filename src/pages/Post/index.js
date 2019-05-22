@@ -11,76 +11,79 @@ import { LoggedInContext } from "../../components/LoggedInContext";
 
 const socket = io(config.SOC_URL, { transports: ["websocket"] });
 const ShowPosts = props => {
-  const [location, setLocation] = useState({});
-  const [post, setPost] = useState(false);
-  const [postId, setPostId] = useState(false);
-  const [addComment, setAddComment] = useState(false);
-  const urlParams = props.match.params.id;
+    const [location, setLocation] = useState({});
+    const [post, setPost] = useState(false);
+    const [postId, setPostId] = useState(false);
+    const [addComment, setAddComment] = useState(false);
+    const urlParams = props.match.params.id;
 
-  useEffect(() => {
-    setPostId(urlParams);
-    // if (navigator && navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(pos => {
-      setLocation({
-        lat: pos.coords.latitude,
-        long: pos.coords.longitude
-      });
-    });
-    // }
-  }, [urlParams]);
-
-  useEffect(() => {
-    try {
-      async function fetchData() {
-        // if (postId) {
-        let res = await fetch(`${config.API_URL}/posts/${postId}`, {
-          method: "GET",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json"
-          }
+    useEffect(() => {
+        setPostId(urlParams);
+        // if (navigator && navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(pos => {
+            setLocation({
+                lat: pos.coords.latitude,
+                long: pos.coords.longitude
+            });
         });
-        let data = await res.json();
-        setPost(data.payload);
         // }
-      }
-      fetchData();
-    } catch (err) {
-      console.log({ fetch: err });
-    }
+    }, [urlParams]);
 
-    socket.on(`${postId}`, post => {
-      setPost([post]);
-    });
-  }, [postId]);
+    useEffect(() => {
+        try {
+            async function fetchData() {
+                // if (postId) {
+                let res = await fetch(`${config.POSTS_GET}`, {
+                    method: "GET",
+                    headers: {
+                        Accept: "application/json",
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        postId
+                    })
+                });
+                let data = await res.json();
+                setPost(data.payload);
+                // }
+            }
+            fetchData();
+        } catch (err) {
+            console.log({ fetch: err });
+        }
 
-  return (
-    <div className={css.mainContainer}>
-      <div id="posts">
-        <MobileHeader />
-        <div className={css.mapContainer}>
-          <div className={css.map}>
-            {post && (
-              <Location
-                zoom={11}
-                lat={location.lat}
-                long={location.long}
-                markers={post}
-                current={true}
-                colour="dodgerblue"
-              />
-            )}
-          </div>
+        socket.on(`${postId}`, post => {
+            setPost([post]);
+        });
+    }, [postId]);
+
+    return (
+        <div className={css.mainContainer}>
+            <div id="posts">
+                <MobileHeader />
+                <div className={css.mapContainer}>
+                    <div className={css.map}>
+                        {post && (
+                            <Location
+                                zoom={11}
+                                lat={location.lat}
+                                long={location.long}
+                                markers={post}
+                                current={true}
+                                colour="dodgerblue"
+                            />
+                        )}
+                    </div>
+                </div>
+                {post && <ShowPost posts={post} />}
+                {addComment ? (
+                    <AddComment postId={postId} />
+                ) : (
+                    <button onClick={() => setAddComment(true)}>+</button>
+                )}
+            </div>
         </div>
-        {post && <ShowPost posts={post} />}
-        {addComment ? (
-          <AddComment postId={postId} />
-        ) : (
-          <button onClick={() => setAddComment(true)}>+</button>
-        )}
-      </div>
-    </div>
-  );
+    );
 };
 
 export default ShowPosts;
