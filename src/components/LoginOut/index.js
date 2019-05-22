@@ -1,19 +1,19 @@
 import React, { Link, useContext } from "react";
 import { LoggedInContext } from "../../components/LoggedInContext";
-import { CssBaseline } from "@material-ui/core";
-
-const logOut = () => {};
+import css from "./loginOut.module.css";
+import MenuButton from "../MenuButton";
 
 const LoginOut = () => {
   const { isLoggedIn, logout } = useContext(LoggedInContext);
   return isLoggedIn ? (
-    <div className={CssBaseline.mainContainer}>
-      <button onClick={logout}>Log Out</button>
+    <div className={css.mainContainer}>
+      <MenuButton buttonName="Logout" className={css.button} onClick={logout} />
     </div>
   ) : (
-    <div className={CssBaseline.mainContainer}>
-      <button onClick={logout}>Log In</button>
-      <button onClick={logout}>Register</button>
+    <div className={css.mainContainer}>
+      <MenuButton className={css.button} buttonName="Log In" />
+
+      <MenuButton className={css.button} buttonName="Register" />
     </div>
   );
 };
