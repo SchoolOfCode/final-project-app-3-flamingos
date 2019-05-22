@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import config from "../../config";
 import Location from "../../components/Location";
 import css from "./Live.module.css";
-import { LoggedInContext } from "../LoggedInContext";
+import { LoggedInContext } from "../../components/LoggedInContext";
 
 import io from "socket.io-client";
 
@@ -23,7 +23,7 @@ const Live = props => {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch("http://j0nn.io/function/watu-posts-get");
+      const response = await fetch("https://j0nn.io/function/watu-posts-get");
       const data = await response.json();
       setPostList(data);
     }
