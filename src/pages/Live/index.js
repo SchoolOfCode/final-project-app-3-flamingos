@@ -5,7 +5,6 @@ import css from "./Live.module.css";
 import { LoggedInContext } from "../../components/LoggedInContext";
 
 import io from "socket.io-client";
-import config from "../../config";
 import "../../index.css";
 import MobileHeader from "../../components/MobileHeader";
 import SinglePost from "../../components/SinglePost";
