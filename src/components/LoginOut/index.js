@@ -1,7 +1,8 @@
-import React, { Link, useContext } from "react";
+import React, { useContext } from "react";
 import { LoggedInContext } from "../../components/LoggedInContext";
 import css from "./loginOut.module.css";
 import MenuButton from "../MenuButton";
+import { Link } from "react-router-dom";
 
 const LoginOut = () => {
   const { isLoggedIn, logout } = useContext(LoggedInContext);
@@ -11,9 +12,12 @@ const LoginOut = () => {
     </div>
   ) : (
     <div className={css.mainContainer}>
-      <MenuButton className={css.button} buttonName="Log In" />
-
+        <Link className={css.link} to="/login">
+      <MenuButton className={css.button} buttonName="Sign In" />
+    </Link>
+    <Link className={css.link} to="/register">
       <MenuButton className={css.button} buttonName="Register" />
+      </Link>
     </div>
   );
 };
