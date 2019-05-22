@@ -2,49 +2,73 @@ import React, { useState } from "react";
 import css from "./PostForm.module.css";
 import config from "../../config";
 
+const cloudinary = require("cloudinary/lib/cloudinary").v2;
+cloudinary.config({
+    cloud_name: config.CLOUD_NAME,
+    api_key: config.CLOUD_KEY,
+    api_secret: config.CLOUD_SECRET
+});
+
 const PostForm = props => {
-  const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("travel");
-  const [file, setFile] = useState(null);
+    const [description, setDescription] = useState("");
+    const [category, setCategory] = useState("travel");
+    const [file, setFile] = useState(null);
 
-  const handleChange = event => {
-    const { value } = event.target;
-    setDescription(value);
-  };
+    const handleChange = event => {
+        const { value } = event.target;
+        setDescription(value);
+    };
 
-  const handleSelect = event => {
-    const { value } = event.target;
-    setCategory(value);
-  };
+    const handleSelect = event => {
+        const { value } = event.target;
+        setCategory(value);
+    };
 
-  const handleFile = event => {
-    const file = event.target.files[0];
-    setFile(file);
-  };
+    const handleFile = event => {
+        const file = event.target.files[0];
+        setFile(file);
+    };
 
-  const handleSubmit = async event => {
-    event.preventDefault();
-
+    const handleSubmit = async event => {
+        event.preventDefault();
         const formData = new FormData();
         formData.append("file", file);
-        formData.append("description", description);
-        formData.append("longitude", props.long);
-        formData.append("latitude", props.lat);
-        formData.append("postCategory", category);
 
-        fetch(
-            `${config.API_URL}/posts?token=${localStorage.getItem("token")}`,
-            {
-                method: "POST",
-                headers: {
-                    Accept: "application/json"
-                    // "Content-Type": "multipart/form-data"
-                },
-                body: formData
-            }
-        )
+        const signData = await fetch(config.SIGN_IMAGE).then(res => res.json());
+        formData.append("signature", signData.signature);
+        formData.append("timestamp", signData.timestamp);
+        formData.append("api_key", config.CLOUD_KEY);
+
+        console.log("posting image");
+        fetch(`${config.CLOUD_URL}`, {
+            method: "POST",
+            headers: {
+                Accept: "application/json"
+            },
+            body: formData
+        })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                console.log("sending post");
+                fetch(`${config.POSTS_ADD}`, {
+                    method: "POST",
+                    headers: {
+                        Accept: "application/json",
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        token: localStorage.getItem("token"),
+                        postCategory: category,
+                        description: description,
+                        longitude: props.long,
+                        latitude: props.lat,
+                        imageUrl: data.secure_url,
+                        imageId: data.public_id
+                    })
+                })
+                    .then(res => res.json())
+                    .then(post => console.log(post));
+            })
             .catch(err => console.error(err))
             .finally(() => {
                 setDescription("");
