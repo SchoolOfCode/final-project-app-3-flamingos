@@ -3,13 +3,6 @@ import css from "./PostForm.module.css";
 import config from "../../config";
 import "../../index.css";
 
-const cloudinary = require("cloudinary/lib/cloudinary").v2;
-cloudinary.config({
-    cloud_name: config.CLOUD_NAME,
-    api_key: config.CLOUD_KEY,
-    api_secret: config.CLOUD_SECRET
-});
-
 const PostForm = props => {
     const [description, setDescription] = useState("");
     const [category, setCategory] = useState("travel");
@@ -77,39 +70,44 @@ const PostForm = props => {
             });
     };
 
-  return (
-    <form className={css.container} onSubmit={handleSubmit}>
-      <select
-        name="category"
-        className={css.type}
-        onChange={handleSelect}
-        value={category}
-      >
-        <option value="travel">Travel Disruption</option>
-        <option value="emergency">Medical Emergency</option>
-        <option value="crime">Crime</option>
-      </select>
-      <input
-        className={css.file}
-        id="file"
-        name="file"
-        type="file"
-        onChange={handleFile}
-      />
-      <input
-        className={css.description}
-        id="description"
-        name="description"
-        type="textarea"
-        placeholder="what's going on?"
-        required={true}
-        wrap="soft"
-        value={description}
-        onChange={handleChange}
-      />
-      <input className={css.submit} id="submit" name="submit" type="submit" />
-    </form>
-  );
+    return (
+        <form className={css.container} onSubmit={handleSubmit}>
+            <select
+                name="category"
+                className={css.type}
+                onChange={handleSelect}
+                value={category}
+            >
+                <option value="travel">Travel Disruption</option>
+                <option value="emergency">Medical Emergency</option>
+                <option value="crime">Crime</option>
+            </select>
+            <input
+                className={css.file}
+                id="file"
+                name="file"
+                type="file"
+                onChange={handleFile}
+            />
+            <input
+                className={css.description}
+                id="description"
+                name="description"
+                type="textarea"
+                placeholder="what's going on?"
+                required={true}
+                wrap="soft"
+                value={description}
+                onChange={handleChange}
+            />
+            <input
+                className={css.submit}
+                id="submit"
+                name="submit"
+                type="submit"
+            />
+        </form>
+    );
 };
 
 export default PostForm;
