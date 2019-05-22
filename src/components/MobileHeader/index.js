@@ -3,6 +3,7 @@ import "../../index.css";
 import css from "../MobileHeader/mobileHeader.module.css";
 import Logo from "../Logo";
 import Nav from "../Nav";
+import LogInOut from "../LoginOut";
 
 const MobileHeader = () => {
   return (
@@ -12,6 +13,9 @@ const MobileHeader = () => {
       </div>
       <div className={css.navbar}>
         <Nav />
+      </div>
+      <div className={css.login}>
+        <LogInOut />
       </div>
     </div>
   );

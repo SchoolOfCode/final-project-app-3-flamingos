@@ -7,12 +7,30 @@
 }
 
 .logo {
-  width: 50%;
+  width: 35%;
 }
 
 .navbar {
   display: flex;
-  width: 50%;
+  width: 40%;
   height: 100%;
   align-items: center;
+}
+
+.login {
+  width: 20%;
+}
+
+@media only screen and (max-width: 400px) {
+  .navbar {
+    display: none;
+  }
+
+  .logo {
+    width: 30%;
+  }
+
+  .login {
+  width: 50%;
+}
 }

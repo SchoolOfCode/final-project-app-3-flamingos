@@ -1,3 +1,28 @@
-.container {
-    /* css */
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.detailContainer {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 70vh;
+}
+
+.profilePhoto {
+  width: 40%;
+}
+
+.photo {
+  width: 50%;
+  height: 60%;
+  -webkit-clip-path: circle(50% at 50% 50%);
+  clip-path: circle(50% at 50% 50%);
+}
+
+.menu {
+  justify-content: flex-end;
 }
