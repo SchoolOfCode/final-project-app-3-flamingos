@@ -10,6 +10,7 @@ const CLOUD_URL = process.env.REACT_APP_CLOUD_URL;
 const CLOUD_NAME = process.env.REACT_APP_CLOUD_NAME;
 const CLOUD_KEY = process.env.REACT_APP_CLOUD_KEY;
 const SIGN_IMAGE = process.env.REACT_APP_SIGN_IMAGE;
+
 module.exports = {
     GMAPS_API_KEY,
     SOC_URL,
