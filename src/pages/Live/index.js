@@ -21,6 +21,17 @@ const Live = props => {
     // const [zoom, setZoom] = useState(props.zoom);
 
     useEffect(() => {
+        if (navigator && navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(pos => {
+                setLocation({
+                    lat: pos.coords.latitude,
+                    long: pos.coords.longitude
+                });
+            });
+        }
+    }, []);
+
+    useEffect(() => {
         async function fetchData() {
             const response = await fetch(config.POSTS_GET);
             const data = await response.json();

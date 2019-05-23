@@ -5,14 +5,12 @@ import Current from "../Current";
 import GoogleMapReact from "google-map-react";
 import config from "../../config";
 
-const GmapsAPIkey = config.GMAPS_API_KEY || process.env.STORYBOOK_GMAPS_KEY;
-
 const Location = props => {
     return (
         <div className={css.container}>
             <GoogleMapReact
                 bootstrapURLKeys={{
-                    key: GmapsAPIkey
+                    key: config.GMAPS_API_KEY
                 }}
                 center={{ lat: props.lat, lng: props.long }}
                 zoom={props.zoom}
