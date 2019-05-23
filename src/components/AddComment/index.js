@@ -12,7 +12,7 @@ const AddComment = props => {
 
     const handleSubmit = async event => {
         event.preventDefault();
-        fetch(`${config.POSTS_COMMENTS}`, {
+        let res = await fetch(`${config.POSTS_COMMENTS}`, {
             method: "PATCH",
             headers: {
                 Accept: "application/json",
@@ -23,11 +23,10 @@ const AddComment = props => {
                 postId: props.postId,
                 comment
             })
-        }).then(res => {
-            console.log(res.json());
-            props.setPost(res.json());
-            setComment("");
         });
+        let post = await res.json();
+        props.setPost([post]);
+        setComment("");
     };
 
     return (
