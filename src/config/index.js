@@ -10,7 +10,7 @@ const POSTS_COMMENTS = process.env.REACT_APP_POSTS_COMMENTS;
 const POSTS_CONFIRM = process.env.REACT_APP_POSTS_CONFIRM;
 const POSTS_GET = process.env.REACT_APP_POSTS_GET;
 const SIGN_IMAGE = process.env.REACT_APP_SIGN_IMAGE;
-const USERS_ADD = process.env.REACT_APP_USER_ADD;
+const USERS_ADD = process.env.REACT_APP_USERS_ADD;
 const USERS_UPDATE = process.env.REACT_APP_USER_UPDATE;
 
 module.exports = {
