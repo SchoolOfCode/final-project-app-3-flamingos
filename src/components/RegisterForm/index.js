@@ -6,9 +6,8 @@ import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
-import { Route } from "react-router-dom";
 import Button from "../../components/Button";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 
 const RegisterForm = props => {
     const [phoneCountry, setPhoneCountry] = useState("+44");
@@ -64,6 +63,8 @@ const RegisterForm = props => {
                 if (data.message === "Number exists") {
                     handleRegister(true);
                 } else if (data.message === "User created") {
+                    console.log(data.message);
+                    handleRegister(isRegistered=true)
                     return (
                         <Route
                             render={({ history }) => {
@@ -85,14 +86,14 @@ const RegisterForm = props => {
             });
     };
 
-    // return isRegistered ? (
-    //   <Route
-    //     render={({ history }) => {
-    //       history.push("/login");
-    //     }}
-    //   />
-    // ) : (
-    return (
+    return isRegistered ? (
+      <Route
+        render={({ history }) => {
+          history.push("/login");
+        }}
+      />
+    ) : (
+    //  (
         <form className={css.container} onSubmit={handleSubmit}>
             <div className={css.phone}>
                 <Select
