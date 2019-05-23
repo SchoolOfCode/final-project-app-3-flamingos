@@ -59,7 +59,7 @@ const Live = props => {
                         {postList.reverse().map((item, idx) => {
                             //do the date conversion here and pass on to post                          
                             const newDate = new Date(item.createdAt)
-                            item.createdAt = newDate.toString()
+                            item.createdAt = newDate.toDateString()
                             console.log(newDate)
                             return <SinglePost post={item}/>;
                         })}
