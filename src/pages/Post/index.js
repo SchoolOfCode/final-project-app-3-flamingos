@@ -24,9 +24,6 @@ const ShowPosts = props => {
             });
         });
         setPostId(props.match.params.id);
-        socket.on(`${postId}`, post => {
-            setPost([post]);
-        });
     }, []);
 
     useEffect(() => {
@@ -52,6 +49,14 @@ const ShowPosts = props => {
             console.log({ fetch: err });
         }
     }, [postId]);
+
+    useEffect(() => {
+        socket.on("comment", socketData => {
+            console.log(socketData);
+            // socket.on(`${postId}`, post => {
+            // setPost([post]);
+        });
+    }, []);
 
     return (
         <div className={css.mainContainer}>
