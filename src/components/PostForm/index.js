@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Route } from "react-router-dom";
 import css from "./PostForm.module.css";
 import config from "../../config";
 import "../../index.css";
@@ -7,6 +8,7 @@ const PostForm = props => {
     const [description, setDescription] = useState("");
     const [category, setCategory] = useState("travel");
     const [file, setFile] = useState(null);
+    const [isSending, setIsSending] = useState(false);
 
     const handleChange = event => {
         const { value } = event.target;
@@ -25,6 +27,7 @@ const PostForm = props => {
 
     const handleSubmit = async event => {
         event.preventDefault();
+        setIsSending(true);
         const formData = new FormData();
         formData.append("file", file);
 
@@ -61,12 +64,17 @@ const PostForm = props => {
                     })
                 })
                     .then(res => res.json())
-                    .then(post => console.log(post));
+                    .then(post => {
+                        if (post.postId) {
+                            props.history.push("/c");
+                        }
+                    });
             })
             .catch(err => console.error(err))
             .finally(() => {
                 setDescription("");
                 setCategory("travel");
+                setIsSending(false);
             });
     };
 
@@ -100,12 +108,21 @@ const PostForm = props => {
                 value={description}
                 onChange={handleChange}
             />
-            <input
-                className={css.submit}
-                id="submit"
-                name="submit"
-                type="submit"
-            />
+            {isSending ? (
+                <input
+                    className={css.sending}
+                    id="sending"
+                    value="Sending..."
+                />
+            ) : (
+                <input
+                    className={css.submit}
+                    id="submit"
+                    name="submit"
+                    type="submit"
+                    value="Submit"
+                />
+            )}
         </form>
     );
 };
