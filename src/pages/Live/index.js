@@ -16,7 +16,6 @@ const socket = io(config.SOC_URL, { transports: ["websocket"] });
 const Live = props => {
     const { isLoggedIn } = useContext(LoggedInContext);
     const [location, setLocation] = useState({});
-    const [posts, setPosts] = useState([]);
     const [postList, setPostList] = useState([]);
     // const [zoom, setZoom] = useState(props.zoom);
 
@@ -48,7 +47,7 @@ const Live = props => {
         socket.on("post", post => {
             setPostList([...postList, post]);
         });
-    }, [postList]);
+    }, []);
 
     return isLoggedIn ? (
         <div className={css.mainContainer}>
@@ -68,11 +67,11 @@ const Live = props => {
                     <div className={css.postScrollContainer}>
                         {console.log(postList)}
                         {postList.reverse().map((item, idx) => {
-                            //do the date conversion here and pass on to post                          
-                            const newDate = new Date(item.createdAt)
-                            item.createdAt = newDate.toDateString()
-                            console.log(newDate)
-                            return <SinglePost post={item}/>;
+                            //do the date conversion here and pass on to post
+                            const newDate = new Date(item.createdAt);
+                            item.createdAt = newDate.toDateString();
+                            console.log(newDate);
+                            return <SinglePost post={item} />;
                         })}
                     </div>
                 </div>

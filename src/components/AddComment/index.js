@@ -23,7 +23,9 @@ const AddComment = props => {
                 postId: props.postId,
                 comment
             })
-        }).then(() => {
+        }).then(res => {
+            console.log(res.json());
+            props.setPost(res.json());
             setComment("");
         });
     };
