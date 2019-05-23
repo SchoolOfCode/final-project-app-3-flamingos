@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Route } from "react-router-dom";
 import css from "./PostForm.module.css";
 import config from "../../config";
 import "../../index.css";
@@ -63,7 +64,11 @@ const PostForm = props => {
                     })
                 })
                     .then(res => res.json())
-                    .then(post => console.log(post));
+                    .then(post => {
+                        if (post.postId) {
+                            props.history.push("/c");
+                        }
+                    });
             })
             .catch(err => console.error(err))
             .finally(() => {
