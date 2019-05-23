@@ -12,49 +12,45 @@ import { LoggedInContext } from "../../components/LoggedInContext";
 const socket = io(config.SOC_URL, { transports: ["websocket"] });
 const ShowPosts = props => {
     const [location, setLocation] = useState({});
-    const [post, setPost] = useState(false);
+    const [post, setPost] = useState([false]);
     const [postId, setPostId] = useState(false);
     const [addComment, setAddComment] = useState(false);
-    const urlParams = props.match.params.id;
 
     useEffect(() => {
-        setPostId(urlParams);
-        // if (navigator && navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(pos => {
             setLocation({
                 lat: pos.coords.latitude,
                 long: pos.coords.longitude
             });
         });
-        // }
-    }, [urlParams]);
+        setPostId(props.match.params.id);
+        socket.on(`${postId}`, post => {
+            setPost([post]);
+        });
+    }, []);
 
     useEffect(() => {
         try {
             async function fetchData() {
-                // if (postId) {
-                let res = await fetch(`${config.POSTS_GET}`, {
-                    method: "GET",
-                    headers: {
-                        Accept: "application/json",
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        postId
-                    })
-                });
-                let data = await res.json();
-                setPost(data.payload);
-                // }
+                if (postId) {
+                    let res = await fetch(`${config.POSTS_GET}`, {
+                        method: "POST",
+                        headers: {
+                            Accept: "application/json",
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            postId
+                        })
+                    });
+                    let data = await res.json();
+                    await setPost([data]);
+                }
             }
             fetchData();
         } catch (err) {
             console.log({ fetch: err });
         }
-
-        socket.on(`${postId}`, post => {
-            setPost([post]);
-        });
     }, [postId]);
 
     return (
@@ -77,9 +73,11 @@ const ShowPosts = props => {
                 </div>
                 {post && <ShowPost posts={post} />}
                 {addComment ? (
-                    <AddComment postId={postId} />
+                    <AddComment postId={postId} setPost={setPost} />
                 ) : (
-                    <button onClick={() => setAddComment(true)}>+</button>
+                    <button onClick={() => setAddComment(true)}>
+                        add a comment
+                    </button>
                 )}
             </div>
         </div>
