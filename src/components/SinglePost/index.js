@@ -5,6 +5,7 @@ import "../../index.css";
 
 const SinglePost = props => {
   const { postId, userId, description, createdAt } = props.post;
+ 
 
   return (
     <div className={css.mainContainer}>

@@ -57,7 +57,11 @@ const Live = props => {
                     <div className={css.postScrollContainer}>
                         {console.log(postList)}
                         {postList.reverse().map((item, idx) => {
-                            return <SinglePost post={item} />;
+                            //do the date conversion here and pass on to post                          
+                            const newDate = new Date(item.createdAt)
+                            item.createdAt = newDate.toString()
+                            console.log(newDate)
+                            return <SinglePost post={item}/>;
                         })}
                     </div>
                 </div>
