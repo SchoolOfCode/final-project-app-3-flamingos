@@ -4,7 +4,7 @@ import Marker from "../../images/mapMarker.png"
 import "../../index.css";
 
 const SinglePost = props => {
-  const { postId, userId, description, createdAt } = props.post;
+  const { postId, userId, description, createdAt, updatedAt } = props.post;
  
 
   return (
@@ -21,7 +21,7 @@ const SinglePost = props => {
           <div className={css.description}>{description}</div>
         </div>
         <div className={css.postIDContainer}>
-          <div className={css.date}>Date Created: </div><div className={css.updateDate}>{createdAt}</div>
+          <div className={css.date}>Date Created: </div><div className={css.updateDate}>{createdAt}</div><div>, </div><div>{updatedAt}</div>
         </div>
       </div>
     </div>

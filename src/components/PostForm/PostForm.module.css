@@ -1,41 +1,42 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 60%;
-  height: 80%;
-  background-color: var(--menuColor);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+    height: 80%;
+    background-color: var(--menuColor);
 }
 
 .container > * {
-  margin: 10px;
+    margin: 10px;
 }
 
 .photo {
-  background-color: transparent;
+    background-color: transparent;
 }
 
-.submit {
-  align-self: center;
-  background-color: var(--nextBlue);
-  border: none;
-  color: var(--white);
-  margin: 10px;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 35px;
-  font-size: 16px;
-  width: 40%;
+.submit,
+.sending {
+    align-self: center;
+    background-color: var(--nextBlue);
+    border: none;
+    color: var(--white);
+    margin: 10px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 35px;
+    font-size: 16px;
+    width: 40%;
 }
 
 .submit:hover {
-  background-color: var(--hoverBlue);
+    background-color: var(--hoverBlue);
 }
 
 @media screen and (min-width: 800px) {
-  .container {
-    width: 30%;
-  }
+    .container {
+        width: 30%;
+    }
 }

@@ -4,20 +4,17 @@ import MobileHeader from "../../components/MobileHeader";
 import "../../index.css";
 import config from "../../config";
 
-const Home = props => {
+const Confirm = props => {
     const [postId, setPostId] = useState("");
     useEffect(() => {
         setPostId(props.match.params.id);
     }, []);
 
+    let confirmError = "Thanks for your post";
     useEffect(() => {
         try {
             async function fetchData() {
                 if (postId) {
-                    console.log({
-                        postId: postId,
-                        token: localStorage.getItem("token")
-                    });
                     let res = await fetch(`${config.POSTS_CONFIRM}`, {
                         method: "PATCH",
                         headers: {
@@ -29,8 +26,14 @@ const Home = props => {
                             token: localStorage.getItem("token")
                         })
                     });
-                    let data = await res.json();
-                    console.log({ conf: data });
+                    let post = await res.json();
+                    if (post.confirmed === true) {
+                        setTimeout(() => {
+                            props.history.push("/live");
+                        }, 3000);
+                    } else {
+                        confirmError = "We could not confirm your post";
+                    }
                 }
             }
             fetchData();
@@ -38,6 +41,7 @@ const Home = props => {
             console.log({ fetch: err });
         }
     }, [postId]);
+
     return (
         <div className={css.mainContainer}>
             <MobileHeader />
@@ -55,10 +59,10 @@ const Home = props => {
                         />
                     </g>
                 </svg>
-                <p className={css.slogan}>Thanks for your post</p>
+                <p className={css.slogan}>{confirmError}</p>
             </div>
         </div>
     );
 };
 
-export default Home;
+export default Confirm;
