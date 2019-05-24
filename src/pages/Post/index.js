@@ -24,9 +24,6 @@ const ShowPosts = props => {
             });
         });
         setPostId(props.match.params.id);
-        socket.on(`${postId}`, post => {
-            setPost([post]);
-        });
     }, []);
 
     useEffect(() => {
@@ -51,6 +48,16 @@ const ShowPosts = props => {
         } catch (err) {
             console.log({ fetch: err });
         }
+    }, [postId]);
+
+    useEffect(() => {
+        socket.on("comment", socketData => {
+            if (postId === Object.keys(socketData)[0]) {
+                setPost([socketData[postId]]);
+            } else {
+                return;
+            }
+        });
     }, [postId]);
 
     return (
