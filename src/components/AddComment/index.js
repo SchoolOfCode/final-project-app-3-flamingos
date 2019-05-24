@@ -25,7 +25,6 @@ const AddComment = props => {
             })
         });
         let post = await res.json();
-        console.log(post.postId);
         props.setPost([post]);
         setComment("");
     };

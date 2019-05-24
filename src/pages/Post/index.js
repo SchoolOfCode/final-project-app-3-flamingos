@@ -52,11 +52,13 @@ const ShowPosts = props => {
 
     useEffect(() => {
         socket.on("comment", socketData => {
-            console.log(socketData);
-            // socket.on(`${postId}`, post => {
-            // setPost([post]);
+            if (postId === Object.keys(socketData)[0]) {
+                setPost([socketData[postId]]);
+            } else {
+                return;
+            }
         });
-    }, []);
+    }, [postId]);
 
     return (
         <div className={css.mainContainer}>
