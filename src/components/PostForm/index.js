@@ -9,6 +9,7 @@ const PostForm = props => {
     const [category, setCategory] = useState("travel");
     const [file, setFile] = useState(null);
     const [isSending, setIsSending] = useState(false);
+    const [cloudData, setCloudData] = useState(false);
 
     const handleChange = event => {
         const { value } = event.target;
@@ -28,52 +29,63 @@ const PostForm = props => {
     const handleSubmit = async event => {
         event.preventDefault();
         setIsSending(true);
-        const formData = new FormData();
-        formData.append("file", file);
+        if (file) {
+            const formData = new FormData();
+            formData.append("file", file);
 
-        const signData = await fetch(config.SIGN_IMAGE).then(res => res.json());
-        formData.append("signature", signData.signature);
-        formData.append("timestamp", signData.timestamp);
-        formData.append("api_key", config.CLOUD_KEY);
+            const signData = await fetch(config.SIGN_IMAGE).then(res =>
+                res.json()
+            );
+            formData.append("signature", signData.signature);
+            formData.append("timestamp", signData.timestamp);
+            formData.append("api_key", config.CLOUD_KEY);
 
-        console.log("posting image");
-        fetch(`${config.CLOUD_URL}`, {
+            console.log("posting image");
+            fetch(`${config.CLOUD_URL}`, {
+                method: "POST",
+                headers: {
+                    Accept: "application/json"
+                },
+                body: formData
+            })
+                .then(res => res.json())
+                .then(data => setCloudData(data));
+        }
+
+        let postBody = {
+            token: localStorage.getItem("token"),
+            postCategory: category,
+            description: description,
+            longitude: props.long,
+            latitude: props.lat
+        };
+
+        if (cloudData) {
+            postBody = {
+                ...postBody,
+                imageUrl: cloudData.secure_url,
+                imageId: cloudData.public_id
+            };
+        }
+        fetch(`${config.POSTS_ADD}`, {
             method: "POST",
             headers: {
-                Accept: "application/json"
+                Accept: "application/json",
+                "Content-Type": "application/json"
             },
-            body: formData
+            body: JSON.stringify(postBody)
         })
             .then(res => res.json())
-            .then(data => {
-                console.log("sending post");
-                fetch(`${config.POSTS_ADD}`, {
-                    method: "POST",
-                    headers: {
-                        Accept: "application/json",
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        token: localStorage.getItem("token"),
-                        postCategory: category,
-                        description: description,
-                        longitude: props.long,
-                        latitude: props.lat,
-                        imageUrl: data.secure_url,
-                        imageId: data.public_id
-                    })
-                })
-                    .then(res => res.json())
-                    .then(post => {
-                        if (post.postId) {
-                            props.history.push("/c");
-                        }
-                    });
+            .then(post => {
+                if (post.postId) {
+                    props.history.push(`/p/${post.postId}`);
+                }
             })
             .catch(err => console.error(err))
             .finally(() => {
                 setDescription("");
                 setCategory("travel");
+                setCloudData(false);
                 setIsSending(false);
             });
     };
