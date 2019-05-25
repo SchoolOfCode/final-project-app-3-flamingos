@@ -11,6 +11,10 @@ const ShowPost = props => {
                               <h4 key={99} className={css.description}>
                                   {post.description}
                               </h4>
+                              <p>
+                                  {post.confirmed ||
+                                      "this post is not yet confirmed, please confirm by following the link in the SMS we sent"}
+                              </p>
                               <ul className={css.comments}>
                                   {post.comments &&
                                       post.comments.map((comment, index) => {
@@ -23,7 +27,7 @@ const ShowPost = props => {
                                                       {
                                                           comment.userId
                                                               .displayName
-                                                      }{" "}
+                                                      }
                                                       - {comment.date}
                                                   </p>
                                               </li>
