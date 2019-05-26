@@ -41,7 +41,7 @@ const Live = props => {
         } catch (err) {
             console.error({ fetch: err });
         }
-    }, []);
+    });
 
     useEffect(() => {
         socket.on("post", post => {
@@ -100,6 +100,11 @@ const Live = props => {
                     <div className={css.postScrollContainer}>
                         {console.log(postList)}
                         {postList.map((item, idx) => {
+                            const newDate = new Date(item.createdAt)
+                            const newTime = new Date(item.updatedAt)
+                            item.createdAt = newDate.toDateString()
+                            item.updatedAt = newTime.toTimeString().slice(0, 8)
+                            console.log(newTime)
                             return <SinglePost post={item} />;
                         })}
                     </div>
