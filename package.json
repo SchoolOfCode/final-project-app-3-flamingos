@@ -6,14 +6,19 @@
     "dependencies": {
         "@material-ui/core": "^3.9.3",
         "classnames": "^2.2.6",
+        "enzyme": "^3.9.0",
+        "enzyme-adapter-react-16": "^1.13.1",
         "google-map-react": "^1.1.4",
         "history": "^4.9.0",
+        "jest-dom": "^3.4.0",
         "jss": "^9.8.7",
         "react": "^16.8.6",
         "react-dom": "^16.8.6",
         "react-jss": "^8.6.1",
         "react-router-dom": "^5.0.0",
         "react-scripts": "3.0.0",
+        "react-test-renderer": "^16.8.6",
+        "react-testing-library": "^7.0.1",
         "socket.io-client": "^2.2.0"
     },
     "scripts": {
