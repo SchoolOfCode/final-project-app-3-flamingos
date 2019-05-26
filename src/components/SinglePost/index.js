@@ -21,7 +21,7 @@ const SinglePost = props => {
           <div className={css.userName}>{userId.displayName}</div>
         </div>
         <div className={css.postIDContainer}>
-          <div className={css.date} id="dateCreated">Date Created: &nbsp;</div><div className={css.updateDate}>{createdAt}</div><div className={css.date}>&nbsp;at &nbsp;</div><div>{updatedAt}</div>
+          <div className={css.date} id="dateCreated">Date Created:&nbsp;</div><div className={css.updateDate}>{createdAt}</div><div className={css.date}>&nbsp;at&nbsp;</div><div>{updatedAt}</div>
         </div>
       </div>
     </div>
