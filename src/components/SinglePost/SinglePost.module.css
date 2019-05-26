@@ -29,6 +29,7 @@
 
 .userNameDescription{
   margin-right: 10px;
+  font-weight: bold;
 }
 
 .secondContainer {
@@ -57,4 +58,8 @@
   flex-direction: row;
   height: 100%;
   width: 100%;
+}
+
+.date{
+  font-weight: bold;
 }

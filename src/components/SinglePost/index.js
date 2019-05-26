@@ -13,15 +13,15 @@ const SinglePost = props => {
           <img className={css.iconImage} src={Marker} alt="Marker"/>
       </div>
         <div className={css.textContainer}>
-          <div className={css.usernameContainer}>
-          <div className={css.userNameDescription}>Posted by:</div>
-          <div className={css.userName}>{userId.displayName}</div>
-        </div>
         <div className={css.secondContainer}>
           <div className={css.description}>{description}</div>
         </div>
+          <div className={css.usernameContainer}>
+          <div className={css.userNameDescription} id="postedBy">Posted by: </div>
+          <div className={css.userName}>{userId.displayName}</div>
+        </div>
         <div className={css.postIDContainer}>
-          <div className={css.date}>Date Created: </div><div className={css.updateDate}>{createdAt}</div><div>, </div><div>{updatedAt}</div>
+          <div className={css.date} id="dateCreated">Date Created:&nbsp;</div><div className={css.updateDate}>{createdAt}</div><div className={css.date}>&nbsp;at&nbsp;</div><div>{updatedAt}</div>
         </div>
       </div>
     </div>
