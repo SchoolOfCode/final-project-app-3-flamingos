@@ -10,19 +10,20 @@ it('renders without crashing', () => {
     shallow(<SinglePost post={data}/>);
 });
 
-it('has a specified number of <div/> elements', ()=> {
+it('should have a specific number of <div/> elements', ()=> {
     expect(wrapper.children().find('div')).toHaveLength(12);
 });
 
-it('has <img/> element that has an alt attribute with value', () => {
+it('should have an <img/> element that has an alt attribute with value', () => {
     expect(wrapper.find('img').props().alt).toBe("Marker")
 });
 
-it('has a <div/> element with specific text', () => {
+it('should have a <div/> element with specific text', () => {
     expect(wrapper.find('#postedBy').text()).toBe("Posted by: ")
 });
 
-it.skip('has a <div/> element with specific text', () => {
+//issues reperesenting the correct spacing in text being tested
+it.skip('should have a <div/> element with specific text', () => {
     expect(wrapper.find('#dateCreated').text()).toBe(`Date Created: `)
 });
 
