@@ -22,6 +22,7 @@ it('should have a <div/> element with specific text', () => {
     expect(wrapper.find('#postedBy').text()).toBe("Posted by: ")
 });
 
+//issues reperesenting the correct spacing in text being tested
 it.skip('should have a <div/> element with specific text', () => {
     expect(wrapper.find('#dateCreated').text()).toBe(`Date Created: `)
 });
