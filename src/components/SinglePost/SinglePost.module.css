@@ -1,65 +1,65 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 
 .mainContainer {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 120px;
-  background-color: var(--white);
-  border-radius: 25px;
-  padding: 5px;
-  padding-left: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  margin: 5px;
-  font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 120px;
+    background-color: var(--white);
+    border-radius: 25px;
+    padding: 5px;
+    padding-left: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 5px;
+    font-family: "Roboto", sans-serif;
+    cursor: pointer;
 }
 
-.textContainer{
-  display: flex;
-  flex-direction: column
-
+.textContainer {
+    display: flex;
+    flex-direction: column;
 }
 
 .usernameContainer {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 20%;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 20%;
 }
 
-.userNameDescription{
-  margin-right: 10px;
-  font-weight: bold;
+.userNameDescription {
+    margin-right: 10px;
+    font-weight: bold;
 }
 
 .secondContainer {
-  display: flex;
-  flex-direction: row;
-  height: 70%;
-  width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 70%;
+    width: 100%;
 }
 
 .iconContainer {
-  width: 15%;
-  height: 60%;
+    width: 15%;
+    height: 60%;
 }
 
 .description {
-  width: 70%;
+    width: 70%;
 }
 
-.iconImage{
-  height: 100%;
-  width: 100%;
+.iconImage {
+    height: 100%;
+    width: 100%;
 }
 
 .postIDContainer {
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-  width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
 }
 
-.date{
-  font-weight: bold;
+.date {
+    font-weight: bold;
 }

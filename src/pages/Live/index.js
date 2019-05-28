@@ -41,15 +41,15 @@ const Live = props => {
         } catch (err) {
             console.error({ fetch: err });
         }
-    }); 
+    });
 
     useEffect(() => {
         socket.on("post", post => {
-            setPostList([...postList, post]);
+            const currentPosts = postList;
+            setPostList([...currentPosts, post]);
         });
     }, []);
 
- 
     return isLoggedIn ? (
         <div className={css.mainContainer}>
             <MobileHeader />
@@ -68,13 +68,18 @@ const Live = props => {
                     <div className={css.postScrollContainer}>
                         {console.log(postList)}
                         {postList.reverse().map((item, idx) => {
-                            //do the date conversion here and pass on to post                          
-                            const newDate = new Date(item.createdAt)
-                            const newTime = new Date(item.updatedAt)
-                            item.createdAt = newDate.toDateString()
-                            item.updatedAt = newTime.toTimeString().slice(0, 8)
-                            console.log(newTime)
-                            return <SinglePost post={item}/>;
+                            //do the date conversion here and pass on to post
+                            const newDate = new Date(item.createdAt);
+                            const newTime = new Date(item.updatedAt);
+                            item.createdAt = newDate.toDateString();
+                            item.updatedAt = newTime.toTimeString().slice(0, 8);
+                            console.log(newTime);
+                            return (
+                                <SinglePost
+                                    post={item}
+                                    history={props.history}
+                                />
+                            );
                         })}
                     </div>
                 </div>
@@ -101,11 +106,11 @@ const Live = props => {
                     <div className={css.postScrollContainer}>
                         {console.log(postList)}
                         {postList.map((item, idx) => {
-                            const newDate = new Date(item.createdAt)
-                            const newTime = new Date(item.updatedAt)
-                            item.createdAt = newDate.toDateString()
-                            item.updatedAt = newTime.toTimeString().slice(0, 8)
-                            console.log(newTime)
+                            const newDate = new Date(item.createdAt);
+                            const newTime = new Date(item.updatedAt);
+                            item.createdAt = newDate.toDateString();
+                            item.updatedAt = newTime.toTimeString().slice(0, 8);
+                            console.log(newTime);
                             return <SinglePost post={item} />;
                         })}
                     </div>
