@@ -12,6 +12,11 @@ describe('<Button/>', () => {
         shallow(<Button/>); 
     });
 
+    it('should have no more than a number of <button> elements', () => {
+        const wrapper = shallow(<Button/>);
+        expect(wrapper.find('button')).toHaveLength(1);
+    })
+
     it('should display exact text passed to it as a prop on a <button>', () => {
         const wrapper = shallow(<Button buttonName="Test display"/>);
         expect(wrapper.find('button').text()).toBe("Test display");
