@@ -1,17 +1,100 @@
 .mainContainer {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background: -webkit-linear-gradient(
+        var(--background-color-gradient-1),
+        var(--background-color-gradient-2)
+    );
+    background: -moz-linear-gradient(
+        var(--background-color-gradient-1),
+        var(--background-color-gradient-2)
+    );
+    background: linear-gradient(
+        var(--background-color-gradient-1),
+        var(--background-color-gradient-2)
+    );
+}
+
+.header {
+    padding-left: var(--header-padding);
 }
 
 .mapContainer {
-  display: flex;
-  width: 90%;
-  height: 70vh;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 80%;
 }
 
-.map {
-  width: 65%;
+.postHeader {
+    padding-left: var(--header-padding);
+}
+
+.postScroller {
+    padding-left: var(--header-padding);
+    overflow-y: scroll;
+}
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background: var(--menuColor);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: var(--menuColor);
+}
+
+.footerContainer {
+    width: 100%;
+}
+
+.mobileMenuContainer {
+    display: flex;
+    width: 100%;
+    height: 25%;
+    flex-direction: column;
+}
+
+@media only screen and (min-width: 800px) {
+    .mainContainer {
+        width: 100%;
+    }
+
+    .mapContainer {
+        flex-direction: row-reverse;
+        width: 90%;
+        height: 90%;
+        padding-left: 3%;
+    }
+
+    .postContainer {
+        width: 40%;
+        height: 88%;
+        padding-right: 5%;
+        border: 2px solid var(--menuColor);
+        overflow-x: scroll;
+    }
+
+    .mobileMenuContainer {
+        display: none;
+    }
 }
