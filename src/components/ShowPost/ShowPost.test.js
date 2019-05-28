@@ -1,3 +1,5 @@
+'us strict';
+
 import React from 'react';
 import ShowPost from './index.js';
 import { shallow} from 'enzyme';
