@@ -11,6 +11,12 @@ const ShowPost = props => {
                               <h4 key={99} className={css.description}>
                                   {post.description}
                               </h4>
+                              {post.imageUrl && (
+                                  <img
+                                      src={post.imageUrl}
+                                      alt={post.description}
+                                  />
+                              )}
                               <p>
                                   {post.confirmed ||
                                       "this post is not yet confirmed, please confirm by following the link in the SMS we sent"}

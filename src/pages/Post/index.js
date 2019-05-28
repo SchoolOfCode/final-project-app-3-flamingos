@@ -5,6 +5,7 @@ import Location from "../../components/Location";
 import ShowPost from "../../components/ShowPost";
 import AddComment from "../../components/AddComment";
 import MobileHeader from "../../components/MobileHeader";
+import MobileMenu from "../../components/MobileMenu";
 import css from "./Post.module.css";
 import "../../index.css";
 import { LoggedInContext } from "../../components/LoggedInContext";
@@ -60,33 +61,65 @@ const ShowPosts = props => {
         });
     }, [postId]);
 
-    return (
+    return LoggedInContext.isLoggedIn ? (
         <div className={css.mainContainer}>
-            <div id="posts">
-                <MobileHeader />
-                <div className={css.mapContainer}>
-                    <div className={css.map}>
-                        {post && (
-                            <Location
-                                zoom={11}
-                                lat={location.lat}
-                                long={location.long}
-                                markers={post}
-                                current={true}
-                                colour="dodgerblue"
-                            />
+            <MobileHeader />
+            <h1 className={css.header}>{post.description}</h1>
+            <div className={css.mapContainer}>
+                <Location
+                    className={css.map}
+                    zoom={12}
+                    lat={location.lat}
+                    long={location.long}
+                    markers={post}
+                    current={true}
+                    colour="dodgerblue"
+                />
+                <div className={css.postContainer}>
+                    <div className={css.postScrollContainer}>
+                        {post && <ShowPost posts={post} />}
+                        {addComment ? (
+                            <AddComment postId={postId} setPost={setPost} />
+                        ) : (
+                            <button onClick={() => setAddComment(true)}>
+                                add a comment
+                            </button>
                         )}
                     </div>
                 </div>
-                {post && <ShowPost posts={post} />}
-                {addComment ? (
-                    <AddComment postId={postId} setPost={setPost} />
-                ) : (
-                    <button onClick={() => setAddComment(true)}>
-                        add a comment
-                    </button>
-                )}
+                <div className={css.mobileMenuContainer}>
+                    <MobileMenu />
+                </div>
             </div>
+        </div>
+    ) : (
+        <div className={css.mainContainer}>
+            <MobileHeader />
+            <h1 className={css.header}>{post.description}</h1>
+            <div className={css.mapContainer}>
+                <Location
+                    className={css.map}
+                    zoom={12}
+                    lat={location.lat}
+                    long={location.long}
+                    markers={post}
+                    current={true}
+                    colour="dodgerblue"
+                />
+                <div className={css.postContainer}>
+                    <div className={css.postScrollContainer}>
+                        {post && <ShowPost posts={post} />}
+                        {addComment ? (
+                            <AddComment postId={postId} setPost={setPost} />
+                        ) : (
+                            <button onClick={() => setAddComment(true)}>
+                                add a comment
+                            </button>
+                        )}
+                    </div>
+                </div>
+            </div>
+            <div className={css.footerContainer}>{/* <Footer /> */}</div>
         </div>
     );
 };
