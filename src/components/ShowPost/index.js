@@ -13,6 +13,7 @@ const ShowPost = props => {
                               </h4>
                               {post.imageUrl && (
                                   <img
+                                      className={css.imageContainer}
                                       src={post.imageUrl}
                                       alt={post.description}
                                   />

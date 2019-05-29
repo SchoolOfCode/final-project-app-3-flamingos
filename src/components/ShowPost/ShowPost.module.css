@@ -7,6 +7,10 @@
     color: black;
 }
 
+.container{
+    width: 360px;
+}
+
 .info {
     color: grey;
     font-size: 10px;
@@ -15,4 +19,8 @@
 
 .description {
     font-weight: bolder;
+}
+
+.imageContainer{
+    width:100%;
 }
