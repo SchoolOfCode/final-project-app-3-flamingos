@@ -9,7 +9,7 @@ const PostForm = props => {
     const [category, setCategory] = useState("travel");
     const [file, setFile] = useState(null);
     const [isSending, setIsSending] = useState(false);
-    const [cloudData, setCloudData] = useState(false);
+    // const [cloudData, setCloudData] = useState(false);
 
     const handleChange = event => {
         const { value } = event.target;
@@ -53,18 +53,18 @@ const PostForm = props => {
                     headers: {
                         Accept: "application/json"
                     },
-                    body: formData
+                    body: formData,
+                    mode: "no-cors"
                 }).then(res => res.json());
-                setCloudData(imageData);
 
-                if (cloudData) {
+                if (imageData) {
                     postBody = {
                         ...postBody,
-                        imageUrl: cloudData.secure_url,
-                        imageId: cloudData.public_id
+                        imageUrl: imageData.secure_url,
+                        imageId: imageData.public_id
                     };
                 }
-
+                console.log(imageData);
                 const post = await fetch(`${config.POSTS_ADD}`, {
                     method: "POST",
                     headers: {
@@ -95,7 +95,7 @@ const PostForm = props => {
                     .finally(() => {
                         setDescription("");
                         setCategory("travel");
-                        setCloudData(false);
+                        // setCloudData(false);
                         setIsSending(false);
                     });
             }
@@ -104,7 +104,7 @@ const PostForm = props => {
         } finally {
             setDescription("");
             setCategory("travel");
-            setCloudData(false);
+            // setCloudData(false);
             setIsSending(false);
         }
     };
