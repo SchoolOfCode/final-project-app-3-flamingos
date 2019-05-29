@@ -29,6 +29,13 @@ const PostForm = props => {
     const handleSubmit = async event => {
         event.preventDefault();
         setIsSending(true);
+        let postBody = {
+            token: localStorage.getItem("token"),
+            postCategory: category,
+            description: description,
+            longitude: props.long,
+            latitude: props.lat
+        };
         if (file) {
             const formData = new FormData();
             formData.append("file", file);
@@ -36,6 +43,7 @@ const PostForm = props => {
             const signData = await fetch(config.SIGN_IMAGE).then(res =>
                 res.json()
             );
+            console.log(signData);
             formData.append("signature", signData.signature);
             formData.append("timestamp", signData.timestamp);
             formData.append("api_key", config.CLOUD_KEY);
@@ -49,45 +57,64 @@ const PostForm = props => {
                 body: formData
             })
                 .then(res => res.json())
-                .then(data => setCloudData(data));
-        }
+                .then(data => setCloudData(data))
+                .then(() => {
+                    console.log(cloudData);
 
-        let postBody = {
-            token: localStorage.getItem("token"),
-            postCategory: category,
-            description: description,
-            longitude: props.long,
-            latitude: props.lat
-        };
-
-        if (cloudData) {
-            postBody = {
-                ...postBody,
-                imageUrl: cloudData.secure_url,
-                imageId: cloudData.public_id
-            };
-        }
-        fetch(`${config.POSTS_ADD}`, {
-            method: "POST",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(postBody)
-        })
-            .then(res => res.json())
-            .then(post => {
-                if (post.postId) {
-                    props.history.push(`/p/${post.postId}`);
-                }
+                    if (cloudData) {
+                        postBody = {
+                            ...postBody,
+                            imageUrl: cloudData.secure_url,
+                            imageId: cloudData.public_id
+                        };
+                    }
+                })
+                .then(() => {
+                    fetch(`${config.POSTS_ADD}`, {
+                        method: "POST",
+                        headers: {
+                            Accept: "application/json",
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(postBody)
+                    })
+                        .then(res => res.json())
+                        .then(post => {
+                            if (post.postId) {
+                                props.history.push(`/p/${post.postId}`);
+                            }
+                        })
+                        .catch(err => console.error(err))
+                        .finally(() => {
+                            setDescription("");
+                            setCategory("travel");
+                            setCloudData(false);
+                            setIsSending(false);
+                        });
+                });
+        } else {
+            fetch(`${config.POSTS_ADD}`, {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(postBody)
             })
-            .catch(err => console.error(err))
-            .finally(() => {
-                setDescription("");
-                setCategory("travel");
-                setCloudData(false);
-                setIsSending(false);
-            });
+                .then(res => res.json())
+                .then(post => {
+                    if (post.postId) {
+                        props.history.push(`/p/${post.postId}`);
+                    }
+                })
+                .catch(err => console.error(err))
+                .finally(() => {
+                    setDescription("");
+                    setCategory("travel");
+                    setCloudData(false);
+                    setIsSending(false);
+                });
+        }
     };
 
     return (
