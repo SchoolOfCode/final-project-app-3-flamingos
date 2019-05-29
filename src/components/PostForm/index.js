@@ -40,7 +40,7 @@ const PostForm = props => {
             if (file) {
                 const formData = new FormData();
                 formData.append("file", file);
-
+                console.log("signing...");
                 const signData = await fetch(config.SIGN_IMAGE).then(res =>
                     res.json()
                 );
@@ -48,15 +48,14 @@ const PostForm = props => {
                 formData.append("timestamp", signData.timestamp);
                 formData.append("api_key", config.CLOUD_KEY);
 
+                console.log("posting image...");
                 const imageData = await fetch(`${config.CLOUD_URL}`, {
                     method: "POST",
                     headers: {
                         Accept: "application/json"
                     },
-                    body: formData,
-                    mode: "no-cors"
+                    body: formData
                 }).then(res => res.json());
-
                 if (imageData) {
                     postBody = {
                         ...postBody,
@@ -64,7 +63,7 @@ const PostForm = props => {
                         imageId: imageData.public_id
                     };
                 }
-                console.log(imageData);
+                console.log("sending post...");
                 const post = await fetch(`${config.POSTS_ADD}`, {
                     method: "POST",
                     headers: {
