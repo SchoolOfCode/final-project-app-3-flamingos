@@ -11,10 +11,13 @@ const ShowPost = props => {
                               <h4 key={99} className={css.description}>
                                   {post.description}
                               </h4>
-                              {post.imageUrl && (
+                              {post.imageId && (
                                   <img
                                       className={css.imageContainer}
-                                      src={post.imageUrl}
+                                      src={`https://res.cloudinary.com/soc-report/image/upload/q_auto:low/${
+                                          post.imageId
+                                      }.jpg
+                                      `}
                                       alt={post.description}
                                   />
                               )}
