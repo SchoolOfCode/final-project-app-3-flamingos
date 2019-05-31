@@ -8,10 +8,12 @@ const Register = props => {
   return (
     <div className={css.mainContainer}>
       <MobileHeader />
+      <div className="page-wrap">
       <div className={css.registerForm}>
         <h1>register</h1>
         <RegisterForm />
       </div>
+    </div>
     </div>
   );
 };

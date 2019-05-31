@@ -9,6 +9,7 @@ const Home = props => {
   return (
     <div className={css.mainContainer}>
       <MobileHeader />
+      <div className="page-wrap">
       <div className={css.logoContainer}>
         <svg
           version="1.1"
@@ -33,6 +34,7 @@ const Home = props => {
           </Link>
         </div>
       </div>
+    </div>
     </div>
   );
 };

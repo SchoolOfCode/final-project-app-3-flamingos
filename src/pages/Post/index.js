@@ -64,6 +64,7 @@ const ShowPosts = props => {
     return LoggedInContext.isLoggedIn ? (
         <div className={css.mainContainer}>
             <MobileHeader />
+            <div className="page-wrap">
             <h1 className={css.header}>{post.description}</h1>
             <div className={css.mapContainer}>
                 <Location
@@ -92,9 +93,11 @@ const ShowPosts = props => {
                 </div>
             </div>
         </div>
+        </div>
     ) : (
         <div className={css.mainContainer}>
             <MobileHeader />
+            <div className="page-wrap">
             <h1 className={css.header}>{post.description}</h1>
             <div className={css.mapContainer}>
                 <Location
@@ -121,6 +124,7 @@ const ShowPosts = props => {
             </div>
             <div className={css.footerContainer}>{/* <Footer /> */}</div>
         </div>
+            </div>
     );
 };
 

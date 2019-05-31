@@ -20,6 +20,9 @@
 .login {
   width: 20%;
 }
+.sidebarContainer {
+    display:none;
+  }
 
 @media only screen and (max-width: 400px) {
   .navbar {
@@ -27,10 +30,16 @@
   }
 
   .logo {
-    width: 30%;
+    width: 20%;
   }
 
   .login {
   width: 50%;
+  display: none;
 }
+
+.sidebarContainer {
+  display: inline;
+  width: 12%;
+  }
 }

@@ -52,6 +52,7 @@ const Live = props => {
 
     return isLoggedIn ? (
         <div className={css.mainContainer}>
+            <div className="page-wrap">
             <MobileHeader />
             <h1 className={css.header}>live</h1>
             <div className={css.mapContainer}>
@@ -86,11 +87,13 @@ const Live = props => {
                 <div className={css.mobileMenuContainer}>
                     <MobileMenu />
                 </div>
+                </div>
             </div>
         </div>
     ) : (
         <div className={css.mainContainer}>
             <MobileHeader />
+                <div className="page-wrap">
             <h1 className={css.header}>live</h1>
             <div className={css.mapContainer}>
                 <Location
@@ -115,6 +118,7 @@ const Live = props => {
                         })}
                     </div>
                 </div>
+            </div>
             </div>
             <div className={css.footerContainer}>{/* <Footer /> */}</div>
         </div>
