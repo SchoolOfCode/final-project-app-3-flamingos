@@ -11,13 +11,13 @@ const Profile = props => {
   return (
     <div className={css.mainContainer}>
       <MobileHeader />
+      <div className="page-wrap">
       <div className={css.detailContainer}>
         <div className={css.profilePhoto} />
-        <img className={css} src={headShot} />
+        <img className={css} src={headShot} alt="headshot"/>
       </div>
       <div className={css.menu}>
-        <MobileMenu />
-      </div>
+      </div></div>
     </div>
   );
 };

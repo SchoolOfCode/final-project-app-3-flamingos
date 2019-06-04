@@ -52,6 +52,7 @@ const Live = props => {
 
     return isLoggedIn ? (
         <div className={css.mainContainer}>
+            <div className="page-wrap">
             <MobileHeader />
             <h1 className={css.header}>live</h1>
             <div className={css.mapContainer}>
@@ -86,39 +87,43 @@ const Live = props => {
                 <div className={css.mobileMenuContainer}>
                     <MobileMenu />
                 </div>
+                </div>
             </div>
         </div>
     ) : (
-            <div className={css.mainContainer}>
-                <MobileHeader />
-                <h1 className={css.header}>live</h1>
-                <div className={css.mapContainer}>
-                    <Location
-                        className={css.map}
-                        zoom={12}
-                        lat={location.lat}
-                        long={location.long}
-                        markers={postList}
-                        current={true}
-                        colour="dodgerblue"
-                    />
-                    <div className={css.postContainer}>
-                        <div className={css.postScrollContainer}>
-                            {console.log(postList)}
-                            {postList.map((item, idx) => {
-                                const newDate = new Date(item.createdAt);
-                                const newTime = new Date(item.updatedAt);
-                                item.createdAt = newDate.toDateString();
-                                item.updatedAt = newTime.toTimeString().slice(0, 8);
-                                console.log(newTime);
-                                return <SinglePost post={item} />;
-                            })}
-                        </div>
+        <div className={css.mainContainer}>
+            <MobileHeader />
+                <div className="page-wrap">
+            <h1 className={css.header}>live</h1>
+            <div className={css.mapContainer}>
+                <Location
+                    className={css.map}
+                    zoom={12}
+                    lat={location.lat}
+                    long={location.long}
+                    markers={postList}
+                    current={true}
+                    colour="dodgerblue"
+                />
+                <div className={css.postContainer}>
+                    <div className={css.postScrollContainer}>
+                        {console.log(postList)}
+                        {postList.map((item, idx) => {
+                            const newDate = new Date(item.createdAt);
+                            const newTime = new Date(item.updatedAt);
+                            item.createdAt = newDate.toDateString();
+                            item.updatedAt = newTime.toTimeString().slice(0, 8);
+                            console.log(newTime);
+                            return <SinglePost post={item} />;
+                        })}
                     </div>
                 </div>
                 <div className={css.footerContainer}>{/* <Footer /> */}</div>
             </div>
-        );
+            </div>
+            <div className={css.footerContainer}>{/* <Footer /> */}</div>
+        </div>
+    );
 };
 
 export default Live;
