@@ -19,6 +19,12 @@ const Live = props => {
     const [postList, setPostList] = useState([]);
     // const [zoom, setZoom] = useState(props.zoom);
 
+    async function fetchData() {
+        const response = await fetch(config.POSTS_GET);
+        const data = await response.json();
+        setPostList(data);
+    }
+
     useEffect(() => {
         if (navigator && navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(pos => {
@@ -31,22 +37,16 @@ const Live = props => {
     }, []);
 
     useEffect(() => {
-        async function fetchData() {
-            const response = await fetch(config.POSTS_GET);
-            const data = await response.json();
-            setPostList(data);
-        }
         try {
             fetchData();
         } catch (err) {
             console.error({ fetch: err });
         }
-    });
+    }, []);
 
     useEffect(() => {
         socket.on("post", post => {
-            const currentPosts = postList;
-            setPostList([...currentPosts, post]);
+            fetchData()
         });
     }, []);
 
@@ -89,36 +89,36 @@ const Live = props => {
             </div>
         </div>
     ) : (
-        <div className={css.mainContainer}>
-            <MobileHeader />
-            <h1 className={css.header}>live</h1>
-            <div className={css.mapContainer}>
-                <Location
-                    className={css.map}
-                    zoom={12}
-                    lat={location.lat}
-                    long={location.long}
-                    markers={postList}
-                    current={true}
-                    colour="dodgerblue"
-                />
-                <div className={css.postContainer}>
-                    <div className={css.postScrollContainer}>
-                        {console.log(postList)}
-                        {postList.map((item, idx) => {
-                            const newDate = new Date(item.createdAt);
-                            const newTime = new Date(item.updatedAt);
-                            item.createdAt = newDate.toDateString();
-                            item.updatedAt = newTime.toTimeString().slice(0, 8);
-                            console.log(newTime);
-                            return <SinglePost post={item} />;
-                        })}
+            <div className={css.mainContainer}>
+                <MobileHeader />
+                <h1 className={css.header}>live</h1>
+                <div className={css.mapContainer}>
+                    <Location
+                        className={css.map}
+                        zoom={12}
+                        lat={location.lat}
+                        long={location.long}
+                        markers={postList}
+                        current={true}
+                        colour="dodgerblue"
+                    />
+                    <div className={css.postContainer}>
+                        <div className={css.postScrollContainer}>
+                            {console.log(postList)}
+                            {postList.map((item, idx) => {
+                                const newDate = new Date(item.createdAt);
+                                const newTime = new Date(item.updatedAt);
+                                item.createdAt = newDate.toDateString();
+                                item.updatedAt = newTime.toTimeString().slice(0, 8);
+                                console.log(newTime);
+                                return <SinglePost post={item} />;
+                            })}
+                        </div>
                     </div>
                 </div>
+                <div className={css.footerContainer}>{/* <Footer /> */}</div>
             </div>
-            <div className={css.footerContainer}>{/* <Footer /> */}</div>
-        </div>
-    );
+        );
 };
 
 export default Live;
