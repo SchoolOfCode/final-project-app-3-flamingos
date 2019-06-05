@@ -1,58 +1,77 @@
 .mainContainer {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100vh;
-  background: -webkit-linear-gradient(
-    var(--background-color-gradient-1),
-    var(--background-color-gradient-2)
-  );
-  background: -moz-linear-gradient(
-    var(--background-color-gradient-1),
-    var(--background-color-gradient-2)
-  );
-  background: linear-gradient(
-    var(--background-color-gradient-1),
-    var(--background-color-gradient-2)
-  );
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background: -webkit-linear-gradient(
+        var(--background-color-gradient-1),
+        var(--background-color-gradient-2)
+    );
+    background: -moz-linear-gradient(
+        var(--background-color-gradient-1),
+        var(--background-color-gradient-2)
+    );
+    background: linear-gradient(
+        var(--background-color-gradient-1),
+        var(--background-color-gradient-2)
+    );
 }
 
 .header {
-  padding-left: var(--header-padding);
+    padding-left: var(--header-padding);
 }
 
 .mapContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 85%;
-  height: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 60vh;
 }
 
 .postHeader {
-  padding-left: var(--header-padding);
+    padding-left: var(--header-padding);
 }
 
-.postScroller {
-  padding-left: var(--header-padding);
+.footerContainer {
+    width: 100%;
+}
+
+.mobileMenuContainer {
+    display: flex;
+    width: 100%;
+    height: 25%;
+    flex-direction: column;
 }
 
 @media only screen and (min-width: 800px) {
-  .mainContainer {
-    width: 100%;
-  }
+    .mainContainer {
+        width: 100%;
+    }
 
-  .mapContainer {
-    flex-direction: row-reverse;
-    width: 95%;
-    height: 80%;
-    padding-left: 3%;
-  }
+    .mapContainer {
+        flex-direction: row-reverse;
+        width: 90%;
+        height: 60vh;
+        margin-left: 3%;
+        box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.25)
+    }
 
-  .postContainer {
-    width: 40%;
-    height: 88%;
-    padding-right: 5%;
-    border: 2px solid var(--menuColor);
-  }
+    .postContainer {
+        width: 40%;
+        height: 100%;
+        overflow-x: scroll;
+        background-color: var(--menuColor);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .mobileMenuContainer {
+        display: none;
+    }
+
+    .map {
+        width: 60%;
+    }
 }

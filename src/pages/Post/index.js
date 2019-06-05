@@ -2,20 +2,19 @@ import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
 import config from "../../config";
 import Location from "../../components/Location";
-import ShowPost from "../../components/ShowPost";
-import AddComment from "../../components/AddComment";
+import SinglePost from "../../components/SinglePost";
 import MobileHeader from "../../components/MobileHeader";
 import MobileMenu from "../../components/MobileMenu";
+import Comments from "../../components/Comments"
 import css from "./Post.module.css";
 import "../../index.css";
-import { LoggedInContext } from "../../components/LoggedInContext";
+
 
 const socket = io(config.SOC_URL, { transports: ["websocket"] });
 const ShowPosts = props => {
     const [location, setLocation] = useState({});
     const [post, setPost] = useState([false]);
     const [postId, setPostId] = useState(false);
-    const [addComment, setAddComment] = useState(false);
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(pos => {
@@ -61,71 +60,33 @@ const ShowPosts = props => {
         });
     }, [postId]);
 
-    return LoggedInContext.isLoggedIn ? (
+    return (
         <div className={css.mainContainer}>
             <MobileHeader />
             <div className="page-wrap">
-            <h1 className={css.header}>{post.description}</h1>
-            <div className={css.mapContainer}>
-                <Location
-                    className={css.map}
-                    zoom={12}
-                    lat={location.lat}
-                    long={location.long}
-                    markers={post}
-                    current={true}
-                    colour="dodgerblue"
-                />
-                <div className={css.postContainer}>
-                    <div className={css.postScrollContainer}>
-                        {post && <ShowPost posts={post} />}
-                        {addComment ? (
-                            <AddComment postId={postId} setPost={setPost} />
-                        ) : (
-                            <button onClick={() => setAddComment(true)}>
-                                add a comment
-                            </button>
-                        )}
+                <h1 className={css.header}>Post</h1>
+                <div className={css.mapContainer}>
+                    <Location
+                        className={css.map}
+                        zoom={12}
+                        lat={location.lat}
+                        markers={post}
+                        long={location.long}
+                        current={true}
+                        colour="dodgerblue"
+                    />
+                    <div className={css.postContainer}>
+                        {post[0] && <SinglePost history={props.history} post={post[0]} />}
+                        {post[0] && <Comments post={post[0]} setPost={setPost} />}
                     </div>
-                </div>
-                <div className={css.mobileMenuContainer}>
-                    <MobileMenu />
-                </div>
-            </div>
-        </div>
-        </div>
-    ) : (
-        <div className={css.mainContainer}>
-            <MobileHeader />
-            <div className="page-wrap">
-            <h1 className={css.header}>{post.description}</h1>
-            <div className={css.mapContainer}>
-                <Location
-                    className={css.map}
-                    zoom={12}
-                    lat={location.lat}
-                    long={location.long}
-                    markers={post}
-                    current={true}
-                    colour="dodgerblue"
-                />
-                <div className={css.postContainer}>
-                    <div className={css.postScrollContainer}>
-                        {post && <ShowPost posts={post} />}
-                        {addComment ? (
-                            <AddComment postId={postId} setPost={setPost} />
-                        ) : (
-                            <button onClick={() => setAddComment(true)}>
-                                add a comment
-                            </button>
-                        )}
+                    <div className={css.mobileMenuContainer}>
+                        <MobileMenu />
                     </div>
                 </div>
             </div>
-            <div className={css.footerContainer}>{/* <Footer /> */}</div>
         </div>
-            </div>
-    );
+    )
 };
 
 export default ShowPosts;
+

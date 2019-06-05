@@ -15,6 +15,7 @@
   width: 40%;
   height: 100%;
   align-items: center;
+  justify-content: space-evenly;
 }
 
 .login {
@@ -34,12 +35,13 @@
   }
 
   .login {
-  width: 50%;
-  display: none;
-}
-
-.sidebarContainer {
-  display: inline;
-  width: 12%;
+    width: 50%;
+    display: none;
   }
+
+  .sidebarContainer {
+    width: 12%;
+    display: inline;
+  }
+
 }

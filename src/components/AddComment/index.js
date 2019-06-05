@@ -31,6 +31,7 @@ const AddComment = props => {
 
     return (
         <form onSubmit={handleSubmit}>
+            {console.log(props)}
             <input
                 className={css.comment}
                 id="description"

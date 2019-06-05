@@ -1,3 +1,11 @@
-.AddComment {
-    /* css */
+form {
+    width: 100%
+}
+
+.comment{
+    width: 74%
+}
+
+.submit{
+    width:20%
 }
