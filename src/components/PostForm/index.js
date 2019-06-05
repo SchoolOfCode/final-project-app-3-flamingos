@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import css from "./PostForm.module.css";
 import config from "../../config";
 import "../../index.css";
+import PText from "react-predictive-text";
 
 const PostForm = props => {
     const [description, setDescription] = useState("");
@@ -109,7 +110,44 @@ const PostForm = props => {
     };
 
     return (
+        
+        
+
         <form className={css.container} onSubmit={handleSubmit}>
+
+            <PText
+
+                options={[
+                    'Macao',
+                    'Macedonia, The Former Yugoslav Republic of',
+                    'Madagascar',
+                    'Malawi',
+                    'Malaysia',
+                    'Maldives',
+                    'Mali',
+                    'Malta',
+                    'Marshall Islands',
+                    'Martinique',
+                    'Mauritania',
+                    'Mauritius',
+                    'Mayotte',
+                    'Mexico',
+                    'Micronesia, Federated States of',
+                    'Moldova, Republic of',
+                    'Monaco',
+                    'Mongolia',
+                    'Montserrat',
+                    'Morocco',
+                    'Mozambique',
+                    'Myanmar'
+                ]}
+
+                onSelect={(country) => alert(country)}
+                optionColor={'#95C8D8'}
+                wrapperStyles={{
+                    padding: '20px'
+                }}
+            />
             <select
                 name="category"
                 className={css.type}
