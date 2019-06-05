@@ -1,0 +1,13 @@
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    font-size: 30px;
+    align-items: flex-start;
+    border: 0px;
+}
+
+.itemContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}

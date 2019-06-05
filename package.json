@@ -16,6 +16,7 @@
         "react-burger-menu": "^2.6.10",
         "react-dom": "^16.8.6",
         "react-jss": "^8.6.1",
+        "react-predictive-text": "^1.2.7",
         "react-router-dom": "^5.0.0",
         "react-scripts": "3.0.0",
         "react-test-renderer": "^16.8.6",
