@@ -50,76 +50,27 @@ const Live = props => {
         });
     }, []);
 
-    return isLoggedIn ? (
+    return (
         <div className={css.mainContainer}>
+            <MobileHeader />
             <div className="page-wrap">
-            <MobileHeader />
-            <h1 className={css.header}>live</h1>
-            <div className={css.mapContainer}>
-                <Location
-                    className={css.map}
-                    zoom={12}
-                    lat={location.lat}
-                    long={location.long}
-                    markers={postList}
-                    current={true}
-                    colour="dodgerblue"
-                />
-                <div className={css.postContainer}>
-                    <div className={css.postScrollContainer}>
-                        {console.log(postList)}
-                        {postList.reverse().map((item, idx) => {
-                            //do the date conversion here and pass on to post
-                            const newDate = new Date(item.createdAt);
-                            const newTime = new Date(item.updatedAt);
-                            item.createdAt = newDate.toDateString();
-                            item.updatedAt = newTime.toTimeString().slice(0, 8);
-                            console.log(newTime);
-                            return (
-                                <SinglePost
-                                    post={item}
-                                    history={props.history}
-                                />
-                            );
-                        })}
-                    </div>
-                </div>
-                <div className={css.mobileMenuContainer}>
-                    <MobileMenu />
-                </div>
-                </div>
-            </div>
-        </div>
-    ) : (
-        <div className={css.mainContainer}>
-            <MobileHeader />
-                <div className="page-wrap">
-            <h1 className={css.header}>live</h1>
-            <div className={css.mapContainer}>
-                <Location
-                    className={css.map}
-                    zoom={12}
-                    lat={location.lat}
-                    long={location.long}
-                    markers={postList}
-                    current={true}
-                    colour="dodgerblue"
-                />
-                <div className={css.postContainer}>
-                    <div className={css.postScrollContainer}>
-                        {console.log(postList)}
+                <h1 className={css.header}>live</h1>
+                <div className={css.mapContainer}>
+                    <Location
+                        className={css.map}
+                        zoom={12}
+                        lat={location.lat}
+                        markers={postList}
+                        long={location.long}
+                        current={true}
+                        colour="dodgerblue"
+                    />
+                    <div className={css.postContainer}>
                         {postList.map((item, idx) => {
-                            const newDate = new Date(item.createdAt);
-                            const newTime = new Date(item.updatedAt);
-                            item.createdAt = newDate.toDateString();
-                            item.updatedAt = newTime.toTimeString().slice(0, 8);
-                            console.log(newTime);
-                            return <SinglePost post={item} />;
+                            return <SinglePost history={props.history} post={item} />;
                         })}
                     </div>
                 </div>
-                <div className={css.footerContainer}>{/* <Footer /> */}</div>
-            </div>
             </div>
             <div className={css.footerContainer}>{/* <Footer /> */}</div>
         </div>

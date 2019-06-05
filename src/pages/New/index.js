@@ -23,6 +23,7 @@ const Post = props => {
             });
         }
     }, []);
+    
     return token ? (
         <div className={css.mainContainer}>
             <MobileHeader />
