@@ -2,27 +2,121 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 100%;
 }
 
 .detailContainer {
-  margin-top: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 70vh;
+  height: 85vh;
 }
 
 .profilePhoto {
-  width: 40%;
+  width: 100%;
+  height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 110px;
+  background-image: linear-gradient(#89b0ae, #bee3db);
 }
 
 .photo {
-  width: 50%;
-  height: 60%;
+  position: fixed;
+  top: 200px;
+  width: 220px;
+  height: 210px;
   -webkit-clip-path: circle(50% at 50% 50%);
   clip-path: circle(50% at 50% 50%);
 }
 
-.menu {
-  justify-content: flex-end;
+.profileText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 40%;
+  /* border: 3px orange solid; */
+}
+
+.nameTitle {
+  width: 100%;
+  /* border: 3px blue solid; */
+  padding-left: 50px;
+}
+
+.infoContainer {
+  width: 100%;
+  /* border: 3px purple solid; */
+  padding-left: 50px;
+  margin-bottom: 15px;
+  font-size: 30px;
+}
+
+.tabletContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  .tabletContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .detailContainer {
+    display: flex;
+    flex-direction: center;
+    align-items: center;
+    height: 85vh;
+  }
+
+  .profilePhoto {
+    width: 100%;
+    height: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 110px;
+    background-image: linear-gradient(#89b0ae, #bee3db);
+  }
+
+  .photo {
+    position: fixed;
+    top: 180px;
+    left: 120px;
+    width: 400px;
+    height: 410px;
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+  }
+
+  .profileText {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    width: 100%;
+    height: 40%;
+    /* border: 3px orange solid; */
+  }
+
+  .profilePhoto {
+    margin-bottom: 30px;
+  }
+  .mainName {
+    width: 50%;
+    text-align: center;
+  }
 }
