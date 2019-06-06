@@ -45,6 +45,10 @@
     flex-direction: column;
 }
 
+.postContainer {
+    background-color: var(--menuColor);
+}
+
 @media only screen and (min-width: 800px) {
     .mainContainer {
         width: 100%;
