@@ -18,11 +18,11 @@ const Comments = props => {
                     </div>
                 )
             })}
-            <div className={css.comment}>
+            {Boolean(localStorage.getItem("token")) && <div className={css.comment}>
                 <div>Add a Comment</div>
                 <br />
                 <AddComment postId={props.post.postId} setPost={props.setPost} />
-            </div>
+            </div>}
         </div>
     )
 }
