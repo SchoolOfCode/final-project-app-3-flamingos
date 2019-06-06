@@ -3,6 +3,7 @@ import io from "socket.io-client";
 import config from "../../config";
 import Location from "../../components/Location";
 import SinglePost from "../../components/SinglePost";
+import PostImage from "../../components/PostImage";
 import MobileHeader from "../../components/MobileHeader";
 import MobileMenu from "../../components/MobileMenu";
 import Comments from "../../components/Comments"
@@ -77,6 +78,11 @@ const ShowPosts = props => {
                     />
                     <div className={css.postContainer}>
                         {post[0] && <SinglePost history={props.history} post={post[0]} />}
+                        {post[0].confirmed ||
+                            <p className={css.isConfirmed}>
+                                this post is not yet confirmed, please confirm by following the link in the SMS we sent"
+                        </p>}
+                        {post[0].imageId && <PostImage post={post[0]} />}
                         {post[0] && <Comments post={post[0]} setPost={setPost} />}
                     </div>
                     <div className={css.mobileMenuContainer}>

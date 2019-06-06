@@ -6,6 +6,8 @@ import "../../index.css";
 import PText from "react-predictive-text";
 
 const PostForm = props => {
+    const categoryList = ["Bar", "Event", "Idea", "Restaurant", "Travel"]
+
     const [description, setDescription] = useState("");
     const [category, setCategory] = useState("travel");
     const [file, setFile] = useState(null);
@@ -110,12 +112,8 @@ const PostForm = props => {
     };
 
     return (
-        
-        
-
         <form className={css.container} onSubmit={handleSubmit}>
-
-            <PText
+            {/* <PText
 
                 options={[
                     'Macao',
@@ -147,16 +145,14 @@ const PostForm = props => {
                 wrapperStyles={{
                     padding: '20px'
                 }}
-            />
+            /> */}
             <select
                 name="category"
                 className={css.type}
                 onChange={handleSelect}
                 value={category}
             >
-                <option value="travel">Travel Disruption</option>
-                <option value="emergency">Medical Emergency</option>
-                <option value="crime">Crime</option>
+                {categoryList.map(category => <option value={`${category}`}>{category}</option>)}
             </select>
             <input
                 className={css.file}
@@ -183,14 +179,14 @@ const PostForm = props => {
                     value="Sending..."
                 />
             ) : (
-                <input
-                    className={css.submit}
-                    id="submit"
-                    name="submit"
-                    type="submit"
-                    value="Submit"
-                />
-            )}
+                    <input
+                        className={css.submit}
+                        id="submit"
+                        name="submit"
+                        type="submit"
+                        value="Submit"
+                    />
+                )}
         </form>
     );
 };

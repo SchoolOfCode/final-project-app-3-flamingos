@@ -74,4 +74,14 @@
     .map {
         width: 60%;
     }
+
+    .imageContainer,
+    .isConfirmed {
+    width: 88%;
+    background-color: var(--white);
+    border-radius: 25px;
+    padding: 20px 10px 20px 20px;
+    margin: 5px;
+    font-family: "Roboto", sans-serif;
+    }   
 }

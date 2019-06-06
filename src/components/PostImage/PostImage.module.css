@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+.mainContainer {
+    width: 87%;
+    height: 400px;
+    background-color: var(--white);
+    border: 5px solid rgba(255,255,255,0.75) ;
+    border-radius: 25px;
+    padding: 20px 10px 20px 10px;
+    margin: 5px;
+    font-family: "Roboto", sans-serif;
+    cursor: pointer;
+    background-position: center;
+    background-size: cover;
+}
