@@ -1,5 +1,5 @@
 const GMAPS_API_KEY =
-    process.env.REACT_APP_GMAPS_KEY || process.env.STORYBOOK_GMAPS_KEY;
+  process.env.REACT_APP_GMAPS_KEY || process.env.STORYBOOK_GMAPS_KEY;
 const SOC_URL = process.env.REACT_APP_SOCKET_URL;
 const CLOUD_KEY = process.env.REACT_APP_CLOUD_KEY;
 const CLOUD_NAME = process.env.REACT_APP_CLOUD_NAME;
@@ -12,19 +12,21 @@ const POSTS_GET = process.env.REACT_APP_POSTS_GET;
 const SIGN_IMAGE = process.env.REACT_APP_SIGN_IMAGE;
 const USERS_ADD = process.env.REACT_APP_USERS_ADD;
 const USERS_UPDATE = process.env.REACT_APP_USER_UPDATE;
+const USERS_GET = process.env.REACT_APP_USERS_GET;
 
 module.exports = {
-    AUTHENTICATE,
-    CLOUD_KEY,
-    CLOUD_NAME,
-    CLOUD_URL,
-    GMAPS_API_KEY,
-    SOC_URL,
-    POSTS_ADD,
-    POSTS_COMMENTS,
-    POSTS_CONFIRM,
-    POSTS_GET,
-    SIGN_IMAGE,
-    USERS_ADD,
-    USERS_UPDATE
+  AUTHENTICATE,
+  CLOUD_KEY,
+  CLOUD_NAME,
+  CLOUD_URL,
+  GMAPS_API_KEY,
+  SOC_URL,
+  POSTS_ADD,
+  POSTS_COMMENTS,
+  POSTS_CONFIRM,
+  POSTS_GET,
+  SIGN_IMAGE,
+  USERS_ADD,
+  USERS_UPDATE,
+  USERS_GET
 };
