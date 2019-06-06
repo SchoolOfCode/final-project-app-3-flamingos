@@ -13,7 +13,6 @@ const SIGN_IMAGE = process.env.REACT_APP_SIGN_IMAGE;
 const USERS_ADD = process.env.REACT_APP_USERS_ADD;
 const USERS_GET = process.env.REACT_APP_USERS_GET;
 const USERS_UPDATE = process.env.REACT_APP_USER_UPDATE;
-const USERS_GET = process.env.REACT_APP_USERS_GET;
 
 module.exports = {
   AUTHENTICATE,
@@ -28,6 +27,6 @@ module.exports = {
   POSTS_GET,
   SIGN_IMAGE,
   USERS_ADD,
-  USERS_UPDATE,
-  USERS_GET
+  USERS_GET,
+  USERS_UPDATE
 };
