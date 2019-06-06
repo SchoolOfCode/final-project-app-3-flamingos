@@ -85,9 +85,6 @@ const ShowPosts = props => {
                         {post[0].imageId && <PostImage post={post[0]} />}
                         {post[0] && <Comments post={post[0]} setPost={setPost} />}
                     </div>
-                    <div className={css.mobileMenuContainer}>
-                        <MobileMenu />
-                    </div>
                 </div>
             </div>
         </div>
