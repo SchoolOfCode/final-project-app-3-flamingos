@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import JssProvider from "react-jss/lib/JssProvider";
@@ -9,7 +9,7 @@ import "../src/index.css";
 
 // Import pages
 import {
-    LoggedInContext,
+    // LoggedInContext,
     LoggedInProvider
 } from "./components/LoggedInContext";
 import Home from "./pages/Home";

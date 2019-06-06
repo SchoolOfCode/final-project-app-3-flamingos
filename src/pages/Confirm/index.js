@@ -3,6 +3,7 @@ import css from "./Confirm.module.css";
 import MobileHeader from "../../components/MobileHeader";
 import "../../index.css";
 import config from "../../config";
+let confirmError = "Thanks for your post";
 
 const Confirm = props => {
     const [postId, setPostId] = useState("");
@@ -10,7 +11,6 @@ const Confirm = props => {
         setPostId(props.match.params.id);
     }, []);
 
-    let confirmError = "Thanks for your post";
     useEffect(() => {
         try {
             async function fetchData() {

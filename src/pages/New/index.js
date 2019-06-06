@@ -4,7 +4,7 @@ import PostForm from "../../components/PostForm";
 import MobileHeader from "../../components/MobileHeader";
 import css from "./New.module.css";
 import { Route } from "react-router-dom";
-import { LoggedInContext } from "../../components/LoggedInContext";
+// import { LoggedInContext } from "../../components/LoggedInContext";
 
 import "../../index.css";
 
@@ -23,7 +23,7 @@ const Post = props => {
             });
         }
     }, []);
-    
+
     return token ? (
         <div className={css.mainContainer}>
             <MobileHeader />
@@ -44,11 +44,11 @@ const Post = props => {
             </div>
         </div>
     ) : (
-        <Route
-            render={({ history }) => {
-                history.push("/live");
-            }}
-        />
-    );
+            <Route
+                render={({ history }) => {
+                    history.push("/live");
+                }}
+            />
+        );
 };
 export default Post;

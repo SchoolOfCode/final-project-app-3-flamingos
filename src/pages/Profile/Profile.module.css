@@ -1,122 +1,68 @@
 .mainContainer {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-}
-
-.detailContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 85vh;
-}
-
-.profilePhoto {
-  width: 100%;
-  height: 30%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 110px;
-  background-image: linear-gradient(#89b0ae, #bee3db);
-}
-
-.photo {
-  position: fixed;
-  top: 200px;
-  width: 220px;
-  height: 210px;
-  -webkit-clip-path: circle(50% at 50% 50%);
-  clip-path: circle(50% at 50% 50%);
-}
-
-.profileText {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 40%;
-  /* border: 3px orange solid; */
-}
-
-.nameTitle {
-  width: 100%;
-  /* border: 3px blue solid; */
-  padding-left: 50px;
-}
-
-.infoContainer {
-  width: 100%;
-  /* border: 3px purple solid; */
-  padding-left: 50px;
-  margin-bottom: 15px;
-  font-size: 30px;
-}
-
-.tabletContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  height: 100%;
-}
-
-@media only screen and (min-width: 768px) {
-  .tabletContainer {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 50%;
-    height: 100%;
-  }
+    width: 100%;
+    height: 100vh;
+    background: -webkit-linear-gradient(
+        var(--hoverBlue),
+        var(--background-color-gradient-2)
+    );
+    background: -moz-linear-gradient(
+        var(--hoverBlue),
+        var(--background-color-gradient-2)
+    );
+    background: linear-gradient(
+        var(--hoverBlue),
+        var(--background-color-gradient-2)
+    );
 }
 
-@media only screen and (min-width: 1200px) {
-  .detailContainer {
-    display: flex;
-    flex-direction: center;
-    align-items: center;
-    height: 85vh;
-  }
+.profileContainer {
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly
+}
 
-  .profilePhoto {
-    width: 100%;
-    height: 45%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 110px;
-    background-image: linear-gradient(#89b0ae, #bee3db);
-  }
+.left,
+.right {
+  display: flex;
+  justify-content: center;
+  flex-direction: column
+}
 
-  .photo {
-    position: fixed;
-    top: 180px;
-    left: 120px;
-    width: 400px;
-    height: 410px;
-    -webkit-clip-path: circle(50% at 50% 50%);
-    clip-path: circle(50% at 50% 50%);
-  }
+.left {
+  align-items: center;
+}
 
-  .profileText {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin-top: 30px;
-    width: 100%;
-    height: 40%;
-    /* border: 3px orange solid; */
-  }
+.right {
+  align-items: flex-start;
+}
 
-  .profilePhoto {
-    margin-bottom: 30px;
-  }
-  .mainName {
-    width: 50%;
-    text-align: center;
-  }
+.avatar {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background-color: var(--menuColor);
+  color: var(--white);
+  font-size: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+.userInfo {
+  width: 30vw;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0px
+}
+
+.label {
+  color: #808080; 
+}
+
+.data {
+  font-size: 36px
 }
