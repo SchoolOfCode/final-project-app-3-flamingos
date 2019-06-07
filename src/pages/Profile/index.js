@@ -35,21 +35,39 @@ const Profile = props => {
   }, []);
 
   return (
+    // <div className={css.mainContainer}>
+    //   <MobileHeader />
+    //   <div className="page-wrap">
+    //     <div className={css.profileContainer}>
+    //       <div className={css.left}>
+    //         {userData && <div className={css.avatar}>{`${userData.name.split(" ")[0].split("")[0]}${userData.name.split(" ")[1].split("")[0]}`}</div>}
+    //         <h1 className={css.hname}>{userData.name}</h1>
+    //       </div>
+    //       <div className={css.right}>
+    //         <div className={css.userInfo}><span className={css.label}>name:</span><span className={css.data}>{userData.name}</span></div>
+    //         <div className={css.userInfo}><span className={css.label}>screen name:</span><span className={css.data}>{userData.displayName}</span></div>
+    //         <div className={css.userInfo}><span className={css.label}>mobile number:</span><span className={css.data}>{userData.phone}</span></div>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
     <div className={css.mainContainer}>
       <MobileHeader />
       <div className="page-wrap">
-        <div className={css.profileContainer}>
-          <div className={css.left}>
-            {userData && <div className={css.avatar}>{`${userData.name.split(" ")[0].split("")[0]}${userData.name.split(" ")[1].split("")[0]}`}</div>}
-            <h1 className={css.hname}>{userData.name}</h1>
-          </div>
-          <div className={css.right}>
+        <h1 className={css.header}>Profile</h1>
+        <div className={css.mapContainer}>
+          <div className={css.infoContainer}>
             <div className={css.userInfo}><span className={css.label}>name:</span><span className={css.data}>{userData.name}</span></div>
             <div className={css.userInfo}><span className={css.label}>screen name:</span><span className={css.data}>{userData.displayName}</span></div>
             <div className={css.userInfo}><span className={css.label}>mobile number:</span><span className={css.data}>{userData.phone}</span></div>
           </div>
+          <div className={css.postContainer}>
+            {userData && <div className={css.avatar}>{`${userData.name.split(" ")[0].split("")[0]}${userData.name.split(" ")[1].split("")[0]}`}</div>}
+            <h1 className={css.hname}>{userData.name}</h1>
+          </div>
         </div>
       </div>
+      <div className={css.footerContainer}>{/* <Footer /> */}</div>
     </div>
   );
 };
