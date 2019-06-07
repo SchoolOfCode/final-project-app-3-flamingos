@@ -1,14 +1,14 @@
-import React, { useContext, useState, useEffect } from "react";
-import { LoggedInContext } from "../../components/LoggedInContext";
+import React, { useState, useEffect } from "react";
+// import { LoggedInContext } from "../../components/LoggedInContext";
 import css from "./Profile.module.css";
 import MobileHeader from "../../components/MobileHeader";
-import MobileMenu from "../../components/MobileMenu";
-import headShot from "../../images/headshot.jpg";
+// import MobileMenu from "../../components/MobileMenu";
+// import headShot from "../../images/headshot.jpg";
 import config from "../../config";
 
 const Profile = props => {
-  const { isLoggedIn, logout } = useContext(LoggedInContext);
-  const [userData, setUserData] = useState({});
+  // const { isLoggedIn, logout } = useContext(LoggedInContext);
+  const [userData, setUserData] = useState(false);
 
   const token = localStorage.getItem("token");
 
@@ -36,26 +36,22 @@ const Profile = props => {
 
   return (
     <div className={css.mainContainer}>
-      {console.log(userData)}
       <MobileHeader />
       <div className="page-wrap">
-        <div className={css.detailContainer}>
-          <div className={css.profilePhoto}>
-            <img className={css.photo} src={headShot} alt="headshot" />
+        <h1 className={css.header}>Profile</h1>
+        <div className={css.mapContainer}>
+          <div className={css.infoContainer}>
+            <div className={css.userInfo}><span className={css.label}>name:</span><span className={css.data}>{userData.name}</span></div>
+            <div className={css.userInfo}><span className={css.label}>screen name:</span><span className={css.data}>{userData.displayName}</span></div>
+            <div className={css.userInfo}><span className={css.label}>mobile number:</span><span className={css.data}>{userData.phone}</span></div>
           </div>
-          <div className={css.profileText}>
-            <h1 className={css.mainName}>{userData.name}</h1>
-            <div className={css.tabletContainer}>
-              <div className={css.nameTitle}>name</div>
-              <div className={css.infoContainer}>{userData.name}</div>
-              <div className={css.nameTitle}>screen name</div>
-              <div className={css.infoContainer}>{userData.displayName}</div>
-              <div className={css.nameTitle}>mobile number</div>
-              <div className={css.infoContainer}>{userData.phone}</div>
-            </div>
+          <div className={css.postContainer}>
+            {userData && <div className={css.avatar}>{`${userData.name.split(" ")[0].split("")[0]}${userData.name.split(" ")[1].split("")[0]}`}</div>}
+            <h1 className={css.hname}>{userData.name}</h1>
           </div>
         </div>
       </div>
+      <div className={css.footerContainer}>{/* <Footer /> */}</div>
     </div>
   );
 };

@@ -5,7 +5,7 @@ import Location from "../../components/Location";
 import SinglePost from "../../components/SinglePost";
 import PostImage from "../../components/PostImage";
 import MobileHeader from "../../components/MobileHeader";
-import MobileMenu from "../../components/MobileMenu";
+// import MobileMenu from "../../components/MobileMenu";
 import Comments from "../../components/Comments"
 import css from "./Post.module.css";
 import "../../index.css";

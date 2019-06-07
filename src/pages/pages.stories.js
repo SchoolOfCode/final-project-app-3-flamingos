@@ -1,12 +1,20 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 
+import Four04 from "./Four04";
 import Home from "./Home";
 import Live from "./Live";
 import Login from "./Login";
 import New from "./New";
 import Post from "./Post";
+import Profile from "./Profile";
 import Register from "./Register";
+
+storiesOf("Pages|404", module)
+    .add("Desktop", () => <Four04 />)
+    .add("Mobile", () => <Four04 />, {
+        viewport: { defaultViewport: "iphone5" }
+    });
 
 storiesOf("Pages|Home", module)
     .add("Desktop", () => <Home />)
@@ -33,9 +41,15 @@ storiesOf("Pages|New", module)
     });
 
 storiesOf("Pages|Post", module)
-    // post id passed as props WtbI9bX3lE
-    .add("Desktop", () => <Post match={{ params: { id: "WtbI9bX3lE" } }} />)
-    .add("Mobile", () => <Post match={{ params: { id: "WtbI9bX3lE" } }} />, {
+    // post id passed as props GDfjdtKQI
+    .add("Desktop", () => <Post match={{ params: { id: "GDfjdtKQI" } }} />)
+    .add("Mobile", () => <Post match={{ params: { id: "GDfjdtKQI" } }} />, {
+        viewport: { defaultViewport: "iphone5" }
+    });
+
+storiesOf("Pages|Profile", module)
+    .add("Desktop", () => <Profile />)
+    .add("Mobile", () => <Profile />, {
         viewport: { defaultViewport: "iphone5" }
     });
 

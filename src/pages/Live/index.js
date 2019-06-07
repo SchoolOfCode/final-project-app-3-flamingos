@@ -1,20 +1,20 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import config from "../../config";
 import Location from "../../components/Location";
 import css from "./Live.module.css";
-import { LoggedInContext } from "../../components/LoggedInContext";
+// import { LoggedInContext } from "../../components/LoggedInContext";
 
 import io from "socket.io-client";
 import "../../index.css";
 import MobileHeader from "../../components/MobileHeader";
 import SinglePost from "../../components/SinglePost";
-import MobileMenu from "../../components/MobileMenu";
-import Footer from "../../components/Footer";
+// import MobileMenu from "../../components/MobileMenu";
+// import Footer from "../../components/Footer";
 
 const socket = io(config.SOC_URL, { transports: ["websocket"] });
 
 const Live = props => {
-  const { isLoggedIn } = useContext(LoggedInContext);
+  // const { isLoggedIn } = useContext(LoggedInContext);
   const [location, setLocation] = useState({});
   const [postList, setPostList] = useState([]);
   // const [zoom, setZoom] = useState(props.zoom);

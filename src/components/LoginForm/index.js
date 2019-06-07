@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import css from "./LoginForm.module.css";
 import config from "../../config";
 
-import { Link, BrowserRouter as Router } from "react-router-dom";
+// import { Link, BrowserRouter as Router } from "react-router-dom";
 import Select from "@material-ui/core/Select";
 import TextField from "@material-ui/core/TextField";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
@@ -76,54 +76,54 @@ const LoginForm = props => {
             }}
         />
     ) : (
-        <form className={css.container} onSubmit={handleSubmit}>
-            <div className={css.phone}>
-                <Select
-                    value={phoneCountry}
-                    onChange={handlePhoneCountry}
-                    input={
-                        <OutlinedInput
-                            name="telephone-number"
-                            id="outlined-tel-number-simple"
-                        />
-                    }
-                >
-                    <MenuItem value={"+44"}>+44</MenuItem>
-                </Select>
+            <form className={css.container} onSubmit={handleSubmit}>
+                <div className={css.phone}>
+                    <Select
+                        value={phoneCountry}
+                        onChange={handlePhoneCountry}
+                        input={
+                            <OutlinedInput
+                                name="telephone-number"
+                                id="outlined-tel-number-simple"
+                            />
+                        }
+                    >
+                        <MenuItem value={"+44"}>+44</MenuItem>
+                    </Select>
+                    <TextField
+                        className={css.phoneNumber}
+                        label="phone number"
+                        variant="outlined"
+                        id="phoneNumber"
+                        name="phoneNumber"
+                        type="text"
+                        placeholder="7412345678"
+                        required={true}
+                        value={phoneNumber}
+                        onChange={handlePhoneNumber}
+                        inputProps={inputProps}
+                    />
+                </div>
                 <TextField
-                    className={css.phoneNumber}
-                    label="phone number"
+                    className={css.password}
                     variant="outlined"
-                    id="phoneNumber"
-                    name="phoneNumber"
-                    type="text"
-                    placeholder="7412345678"
+                    classes={{ root: css.border }}
+                    id="password"
+                    name="password"
+                    type="password"
+                    placeholder="password"
                     required={true}
-                    value={phoneNumber}
-                    onChange={handlePhoneNumber}
-                    inputProps={inputProps}
+                    value={password}
+                    onChange={handlePassword}
                 />
-            </div>
-            <TextField
-                className={css.password}
-                variant="outlined"
-                classes={{ root: css.border }}
-                id="password"
-                name="password"
-                type="password"
-                placeholder="password"
-                required={true}
-                value={password}
-                onChange={handlePassword}
-            />
-            <input
-                className={css.submit}
-                id="submit"
-                name="submit"
-                type="submit"
-            />
-        </form>
-    );
+                <input
+                    className={css.submit}
+                    id="submit"
+                    name="submit"
+                    type="submit"
+                />
+            </form>
+        );
 };
 
 export default LoginForm;

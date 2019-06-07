@@ -47,7 +47,9 @@
         ]
     },
     "devDependencies": {
+        "@storybook/addon-actions": "^5.1.3",
         "@storybook/addon-viewport": "^5.0.11",
-        "@storybook/react": "^5.0.11"
+        "@storybook/react": "^5.0.11",
+        "storybook-react-router": "^1.0.5"
     }
 }

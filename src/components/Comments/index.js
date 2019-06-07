@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { LoggedInContext } from "../../components/LoggedInContext";
+import React from "react";
+// import { LoggedInContext } from "../../components/LoggedInContext";
 import AddComment from "../AddComment"
 import css from "./Comments.module.css";
 
 const Comments = props => {
-    const [addComment, setAddComment] = useState(false);
+    // const [addComment, setAddComment] = useState(false);
 
     return (
         <div className={css.container}>

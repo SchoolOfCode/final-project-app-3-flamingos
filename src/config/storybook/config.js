@@ -1,19 +1,18 @@
-import { configure } from "@storybook/react";
-import { addParameters } from "@storybook/react";
+import { configure, addParameters, addDecorator } from "@storybook/react";
 import watu from "./watu";
-//import { themes } from "@storybook/theming";
+
+// import StoryRouter from 'storybook-react-router';
+// addDecorator(StoryRouter());
 
 addParameters({
     options: {
         theme: watu
-        // theme: themes.dark
     },
     viewport: "responsive"
 });
 
 const components = require.context("../../components", true, /\.stories\.js$/);
 
-// const pages = require("../../src/pages");
 const pages = require.context("../../pages", true, /\.stories\.js$/);
 
 function loadStories() {

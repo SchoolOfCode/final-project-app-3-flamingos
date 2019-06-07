@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { Route } from "react-router-dom";
 import css from "./PostForm.module.css";
 import config from "../../config";
 import "../../index.css";
-import PText from "react-predictive-text";
+// import PText from "react-predictive-text";
 
 const PostForm = props => {
     const categoryList = ["Bar", "Event", "Idea", "Restaurant", "Travel"]
