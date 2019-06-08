@@ -14,3 +14,13 @@
     width: 100%;
     margin: 20px 0px
 }
+
+.loginContainer{
+    display: flex; 
+    flex-direction: column;
+
+}
+
+.loginButton{
+    width:70%;
+}
