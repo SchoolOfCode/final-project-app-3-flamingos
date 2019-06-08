@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { slide as Menu } from "react-burger-menu";
 import { Link } from "react-router-dom";
 import css from "./SideBar.module.css";
@@ -15,14 +15,13 @@ const SideBar = () => {
             width={'40%'}>
             <div className={css.mainContainer}>
                 <div className={css.itemContainer}>
-                    <Link to="/live">
-                        <div className={css.title}>live</div>
-                    </Link>
-                </div>
-
-                <div className={css.itemContainer}>
                     <Link to="/new">
                         <div className={css.title}>post</div>
+                    </Link>
+                </div>
+                <div className={css.itemContainer}>
+                    <Link to="/live">
+                        <div className={css.title}>live</div>
                     </Link>
                 </div>
                 <div className={css.itemContainer}>
@@ -30,39 +29,28 @@ const SideBar = () => {
                         <div className={css.title}>profile</div>
                     </Link>
                 </div>
-
-                <div className={css.loginContainer}>
+                <div className={css.itemContainer}>
                     <div className={css.title} onClick={logout}>logout</div>
                 </div>
             </div>
         </Menu>
     ) : (
             <Menu
-                width={'30%'}>
+                width={'40%'}>
                 <div className={css.mainContainer}>
                     <div className={css.itemContainer}>
                         <Link to="/live">
                             <div className={css.title}>live</div>
                         </Link>
                     </div>
-
                     <div className={css.itemContainer}>
-                        <Link to="/new">
-                            <div className={css.title}>post</div>
-                        </Link>
-                    </div>
-                    <div className={css.itemContainer}>
-                        <Link to="/profile">
-                            <div className={css.title}>profile</div>
-                        </Link>
-                    </div>
-
-                    <div className={css.loginContainer}>
-                        <Link className={css.link} to="/login">
-                            <div className={css.title}>login</div>
-                        </Link>
                         <Link className={css.link} to="/register">
                             <div className={css.title}>register</div>
+                        </Link>
+                    </div>
+                    <div className={css.itemContainer}>
+                        <Link className={css.link} to="/login">
+                            <div className={css.title}>login</div>
                         </Link>
                     </div>
                 </div>
