@@ -1,104 +1,104 @@
 .mainContainer {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100vh;
-    background: -webkit-linear-gradient(
-        var(--background-color-gradient-1),
-        var(--background-color-gradient-2)
-    );
-    background: -moz-linear-gradient(
-        var(--background-color-gradient-1),
-        var(--background-color-gradient-2)
-    );
-    background: linear-gradient(
-        var(--background-color-gradient-1),
-        var(--background-color-gradient-2)
-    );
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  background: -webkit-linear-gradient(
+    var(--background-color-gradient-1),
+    var(--background-color-gradient-2)
+  );
+  background: -moz-linear-gradient(
+    var(--background-color-gradient-1),
+    var(--background-color-gradient-2)
+  );
+  background: linear-gradient(
+    var(--background-color-gradient-1),
+    var(--background-color-gradient-2)
+  );
 }
 
 .header {
-    padding-left: var(--header-padding);
+  padding-left: var(--header-padding);
 }
 
 .postHeader {
-    padding-left: var(--header-padding);
+  padding-left: var(--header-padding);
 }
 
 .footerContainer {
-    width: 100%;
+  width: 100%;
 }
 
 .mobileMenuContainer {
-    display: flex;
-    width: 100%;
-    height: 25%;
-    flex-direction: column;
+  display: flex;
+  width: 100%;
+  height: 25%;
+  flex-direction: column;
 }
 
 .mapContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.25);
 }
 
 .postContainer {
-    overflow-x: scroll;
-    padding-left: 5%;
-    width: 100%;
-    background-color: var(--menuColor);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  overflow-x: scroll;
+  padding-left: 5%;
+  width: 100%;
+  background-color: var(--menuColor);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .imageContainer,
 .isConfirmed {
-width: 88%;
-background-color: var(--white);
-border-radius: 25px;
-padding: 20px 10px 20px 20px;
-margin: 5px;
-font-family: "Roboto", sans-serif;
-}  
+  width: 88%;
+  background-color: var(--white);
+  border-radius: 25px;
+  padding: 20px 10px 20px 20px;
+  margin: 5px;
+  font-family: "Roboto", sans-serif;
+}
 
 @media only screen and (min-width: 800px) {
-    .mapContainer {
-        flex-direction: row-reverse;
-        /* width: 90%; */
-        height: 60vh;
-        margin-left: 3%;
-        box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.25)
-    }
+  .mapContainer {
+    flex-direction: row-reverse;
+    width: 92%;
+    height: 60vh;
+    margin-left: 3%;
+    box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.25);
+  }
 
-    .postContainer {
-        width: 40%;
-        height: 100%;
-        overflow-x: scroll;
-        background-color: var(--menuColor);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-left: 0%;
-    }
+  .postContainer {
+    width: 40%;
+    height: 100%;
+    overflow-x: scroll;
+    background-color: var(--menuColor);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0%;
+  }
 
-    .mobileMenuContainer {
-        display: none;
-    }
+  .mobileMenuContainer {
+    display: none;
+  }
 
-    .map {
-        width: 60%;
-    }
+  .map {
+    width: 60%;
+  }
 
-    .imageContainer,
-    .isConfirmed {
+  .imageContainer,
+  .isConfirmed {
     width: 88%;
     background-color: var(--white);
     border-radius: 25px;
     padding: 20px 10px 20px 20px;
     margin: 5px;
     font-family: "Roboto", sans-serif;
-    }   
+  }
 }
